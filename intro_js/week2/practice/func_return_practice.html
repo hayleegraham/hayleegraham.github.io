@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Return Practice</title>
+</head>
+<body>
+    10 + <input type="text" name="add" id="add"> = <span id="output"></span>
+    <button onClick="calculate()">Add</button>
+
+    <script>
+        var addInput = document.getElementById('add')
+        var valOutput = document.getElementById('output')
+
+        function calculate(){
+            var userValue = addInput.value
+            var result = addTen(userValue)
+            span.innerHTML = result
+           console.log('ths is result',result)
+        }
+        function addTen(num) {
+            var answer = 10 + parseFloat(num)
+            return answer
+        }
+        
+    </script>
+</body>
+</html>

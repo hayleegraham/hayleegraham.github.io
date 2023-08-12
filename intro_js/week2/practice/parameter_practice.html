@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parameter/Functions Practice</title>
+    <style>
+        #square{
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="square">
+
+    </div>
+
+    <p id="myp" onClick="pClicked()">
+        Some words in here.
+    </p>
+    <input type="text" id="colorOption">
+    <button onClick="buttonClicked('Red')">Change Color</button>
+   <script>
+    // Defining var outside of function allows it to be used in multiple functions
+       var pEl = document.getElementById('myp')
+    function pClicked() {
+       pEl.innerHTML = "new stuff"
+       console.log(pEl.innerHTML)
+    }
+      function buttonClicked(colorName) {
+        //Gets the value of the textbox (color)
+        var colorInput = document.getElementById('colorOption').value
+        console.log(colorInput)
+
+        if(colorInput != '') {
+            
+            //Sets the value of square background color
+            var sqr = document.getElementById('square')
+            sqr.style.backgroundColor = colorInput
+        }
+        else{
+            //Re-defines pEl for this function, withouot this the function was being called onClick
+            // var pEl = document.getElementById('myp')
+            pEl.innerHTML = 'Enter a Color'
+        }
+    
+      } 
+    //  doAlert('haylee');
+   </script> 
+</body>
+</html>

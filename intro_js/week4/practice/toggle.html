@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Get/Set Attribute</title>
+    <style>
+        .open {
+            display: block;
+        }
+        .close {
+            display: none;
+        }
+        h3 {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = ()=> {
+
+            //Access all div elements (creates an array)
+            var allDivs = document.getElementsByTagName('div');
+
+            //Set attribute (class = close) for all div elements
+            for (var i = 0; i < allDivs.length; i++) {
+                allDivs[i].setAttribute("class", "close");
+            }
+
+            //Access all h3 elements (creates an array)
+            var allH3 = document.getElementsByTagName('h3');
+
+            //Execute code depending on which h3 is clicked
+            for (var i = 0; i < allH3.length; i++) {
+
+                //Sets up the h3 that is clicked on
+                var thisH3 = allH3[i];
+
+                //DOES NOT WORK if written "thisH3.onclick = ()=> {}" --"this" returns window object--Why???
+                thisH3.onclick = function() {
+                    //alert('clicked')
+                    if (this.nextElementSibling.getAttribute("class") == "close") {
+                        this.nextElementSibling.setAttribute("class", "open");
+                    }else{
+                        this.nextElementSibling.setAttribute("class", "close");
+                    }
+                } //End of onclick function
+            } //End of h3 loop
+        } //End of onload function
+    </script>
+</head>
+<body>
+    <h3>Should you click here?</h3>
+    <div>NO - dishonor on you, dishonor on your family, dishonor on your cow...</div>
+
+    <h3>Or should you click here?</h3>
+    <div>Nope. Loser.</div>
+
+    <h3>Oooor maybe here?</h3>
+    <div>Good choice, you win!</div>
+</body>
+</html>

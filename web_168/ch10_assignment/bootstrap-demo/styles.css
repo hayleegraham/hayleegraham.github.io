@@ -1,0 +1,29 @@
+.row-center {
+  justify-content: center;
+}
+
+.profile {
+  border-radius: 50%;
+  opacity: 50%;
+}
+
+.profile:hover {
+  animation: spin 2.5s cubic-bezier(0.9, 0.05, 0.1, 1) 2 alternate forwards;
+}
+
+@keyframes spin {
+  0% {
+    height: 240px;
+    width: 240px;
+    opacity: 50%;
+  }
+  100% {
+    height: 380px;
+    width: 380px;
+    rotate: 360deg;
+    opacity: 100%;
+  }
+}
+.image-size {
+  max-height: 400px;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Objects & Toggle Practice</title>
+    <style>
+      
+      .personCont{
+        display: none;
+      }
+    </style>
+    <script src="js/JQuery.js"></script>
+    <script>
+      
+      const person1 = { fname: "Haylee", lname: "Graham", favColor: "teal" };
+      const person2 = { fname: "Doug", lname: "Saisho", favColor: "orange" };
+      const people = [person1, person2];
+
+      const myToggleObj = {
+        duration: 5000,
+        complete: () => {
+          console.log(activePerson.fname);
+        },
+      };
+      const clickFunction = (event) => {
+        const buttonEl = $(event.target)
+        const personID = buttonEl.attr('person')
+        const person = people[personID]
+        const personContent = buttonEl.next('.personCont')
+        const fnameContent = personContent.children('.fname')
+        fnameContent.html(person.fname)
+        const lnameContent = personContent.children('.lname')
+        lnameContent.html(person.lname)
+        personContent.css('background-color', person.favColor)
+        personContent.toggle()
+      };
+      $(document).ready(function () {
+        $(".person").click(clickFunction);
+      });
+    </script>
+  </head>
+  <body>
+    <button class="person" person="0">Person 1</button>
+    <div class="personCont">
+        <div class="fname"></div>
+        <div class="lname"></div>
+    </div>
+    <br>
+    <button class="person" person="1">Person 2</button>
+    <div class="personCont">
+        <div class="fname"></div>
+        <div class="lname"></div>
+    </div>
+
+  </body>
+</html>

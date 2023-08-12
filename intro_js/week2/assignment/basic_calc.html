@@ -1,0 +1,54 @@
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Calculator - Basic</title>
+  <style>
+  table, td {
+        border:1px solid #000000;
+    }
+    td {
+        cursor:pointer;
+        text-align: center;
+    }    
+</style>
+<script>
+// Variable that will save the last value clicked
+var lastNumEntered = ''
+
+function calculate(numEntered){
+  if (numEntered == 'C'){
+     document.getElementById('answer').value = '';
+  }
+  else if (numEntered == '='){
+
+    //Checks if last value clicked before "=" is anything besides a number
+    if (lastNumEntered == '+' || lastNumEntered == '-' || lastNumEntered == '*' || lastNumEntered == '/' || lastNumEntered == '.'){
+
+      //If last value clicked before "=" is not a number, show error message
+        document.getElementById('answer').value = 'Invalid Operation';
+      }else{
+      //If last value clicked before "=" is a number, run calculation
+    document.getElementById('answer').value = eval(document.getElementById('answer').value);
+    }   
+  }
+  else {
+    document.getElementById('answer').value += numEntered;
+ }
+ lastNumEntered = numEntered
+
+} 
+</script>
+
+</head><body>
+  <table>
+<tbody><tr><td colspan="3"><input type="text" id="answer" disabled=""></td><td onclick="calculate('C');">C</td></tr>     
+<tr><td onclick="calculate(1);">1</td><td onclick="calculate(2);">2</td><td onclick="calculate(3);">3</td><td onclick="calculate('+')"> +</td></tr>
+<tr><td onclick="calculate(4);">4</td><td onclick="calculate(5);">5</td><td onclick="calculate(6);">6</td><td onclick="calculate('-')";> -</td></tr>
+<tr><td onclick="calculate(7);">7</td><td onclick="calculate(8);">8</td><td onclick="calculate(9);">9</td><td onclick="calculate('*')";> *</td></tr>
+<tr><td onclick="calculate('.');">.</td><td onclick="calculate(0);">0</td><td onclick="calculate('=')";>=</td><td onclick="calculate('/')";>  /</td></tr>
+
+</tbody>
+</table>
+</body>
+</html>

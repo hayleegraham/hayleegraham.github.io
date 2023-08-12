@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 4 - Table Loop</title>
+    <style>
+      .square {
+        display: inline-block;
+        border: black solid thin;
+        height: 40px;
+        width: 40px;
+        font-size: 1.5em;
+        text-align: center;
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: red;
+      }
+      .blue {
+        color: blue;
+      }
+      .pink {
+        color: pink;
+      }
+      #container{
+        width: 470px;
+        
+      }
+    </style>
+    <script>
+        const createGrid = (height, width) => {
+
+          //Loop to make rows
+          for (var i = 0; i < height+1; i++) {
+            var divContainer = document.getElementById("container");
+
+            //Condition to create pink X if i = 0, otherwise create first col (red num cells)
+            if (i == 0) {
+              var createX = `<div class= "square pink">x</div>`;
+              divContainer.innerHTML += createX;
+            } else {
+              var createYAxis = `<div class= "square red">${i}</div>`;
+              divContainer.innerHTML += createYAxis;
+            }
+
+            //Loop to make cells
+            for (var j = 1; j < width+1; j++) {
+
+              //Ternary condition that either creates top row with original nums
+              // otherwise, multiply first col by top row (i * j)
+              var multNum = (i == 0) ? j : i * j;
+              
+              //Ternary condition that sets up class name for blue if i = 0 (top row)
+              var blueNum = (i == 0) ? "blue" : "";
+
+              //Ternary condition that sets up class name for green if i = j (top row and first col nums are equal)
+              var grnNum = (i == j) ? "green" : "";
+
+              //Set up div with class names  and text based on conditions
+              var createCell = `<div class= "square ${blueNum} ${grnNum}">${multNum}</div>`;
+              //Appends styled cell to container div
+              divContainer.innerHTML += createCell;
+            }
+            //Appends break to end of each row
+            divContainer.innerHTML += "<br>";
+          }
+        };
+      //Onload calls function that calls createGrid function
+      window.onload = ()=> createGrid(10, 10);
+    </script>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+</html>

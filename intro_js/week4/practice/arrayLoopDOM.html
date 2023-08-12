@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Loop DOM</title>
+</head>
+<body>
+    <h1>My Dogs Are:</h1>
+    <p id="para">
+
+    </p>
+
+    <p id="dom">
+
+    </p>
+    
+
+    <script>
+
+        var myArray = new Array();
+        myArray[0] = "Missy";
+        myArray[1] = "Daisy";
+        myArray[2] = "Andy";
+        myArray[3] = "Letty";
+
+
+        //Example 1: 
+
+        window.onload = function() {
+
+            var myPara = document.getElementById('para');
+
+            //Loop thru the array - create elements, nodes, & append them
+            for (var i = 0; i < myArray.length; i++) {
+                var text = document.createTextNode(myArray[i]);
+                var br = document.createElement('br');
+
+                myPara.appendChild(text);
+                myPara.appendChild(br);
+            }
+        }
+
+
+        // Example 2:
+
+        window.onload = function() {
+            var domSample = document.getElementById('dom');
+            
+
+            //Create <h2> element to append after loop
+            var theH2 = document.createElement('h2');
+            var theText = document.createTextNode("My Dogs Are:");
+            var theUL = document.createElement('ul');
+
+            domSample.appendChild(theH2).appendChild(theText);
+
+            //Loop thru the array - create elements, nodes, & append them
+            for (var i = 0; i < myArray.length; i++) {
+                var text = document.createTextNode(myArray[i]);
+                var li = document.createElement('li');
+
+                domSample.appendChild(theUL).appendChild(li).appendChild(text);
+        
+            }
+        }
+    </script>
+</body>
+</html>

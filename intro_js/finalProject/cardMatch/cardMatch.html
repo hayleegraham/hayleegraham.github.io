@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="cardMatch.css">
+    <title>Card Match Game</title>
+    <script src="cardMatch.js"></script>
+  </head>
+
+  <body>
+    <h1 id="title">Quick&nbsp; Match</h1>
+    <div id="timerContainer"></div>
+    <div id="matchCountContainer"></div>
+    <div id="cardContainer"></div>
+    <br />
+    <br />
+    <div id="youWonContainer" class="hideButton"></div>
+    <br />
+    <div id="levelBtnContainer">
+      Select a level: <br />
+      <button id="easy" cardCount="3" class="startButton">Easy</button><br />
+      <button id="medium" cardCount="4" class="startButton">Medium</button
+      ><br />
+      <button id="hard" cardCount="5" class="startButton">Hard</button><br />
+    </div>
+  </body>
+</html>

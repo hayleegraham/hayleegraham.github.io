@@ -1,0 +1,128 @@
+#wrapper {
+    background: #e0f0ea;
+    background: linear-gradient(304deg,#e0f0ea 10%, #95adbe 80%);
+    background: -webkit-linear-gradient(304deg,#e0f0ea 10%, #95adbe 80%);
+    background: -moz-linear-gradient(304deg,#e0f0ea 10%, #95adbe 80%);
+}
+header {
+  text-align: center;
+  background: #95adbe;
+  font-family: "Cinzel Decorative", cursive;
+  text-decoration: underline;
+  border-bottom: 1px solid #3c2a4d;
+  height: 90px;
+}
+body {
+  background-color: #eaeaea;
+  color: #3c2a4d;
+  font-family: "Cardo", serif;
+}
+nav {
+  font-weight: bold;
+  padding: 0;
+  text-align: left;
+  border-right: 1px solid #3c2a4d;
+}
+nav ul {
+  font-size: 1.2em;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+nav a {
+  text-decoration: none;
+  transition: color 0.5s ease-out;
+}
+nav a:link {
+  color: #574f7d;
+}
+nav a:visited {
+  color: #3c2a4d;
+}
+nav a:hover {
+  color: #95adbe;
+}
+main {
+    min-height: 500px;
+    padding: 30px;
+    padding-right: 60px;
+}
+
+#gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+  margin: auto;
+}
+figure {
+  width: 180px;
+  height: 180px;
+  position: relative;
+  z-index: 1;
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0);
+  margin: 1em;
+  font-size: 0.4em;
+  text-align: center;
+  transition: all ease-out 0.4s;
+}
+figure:hover {
+  opacity: 1;
+  z-index: 999;
+  box-shadow: 3px 3px 3px #333;
+  color: rgba(0, 0, 0, 1);
+  transform: scale(1.7);
+}
+figure:hover > figcaption {
+    background-color: #e0f0ea;
+    color: #3c2a4d;
+    border: 1px solid #3c2a4d;
+    padding: 4px;
+    bottom:0px;
+    position:absolute;
+    width:100%;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  #wrapper {
+    border: 1px solid #000000;
+    box-shadow: 3px 3px 3px #333;
+    margin: auto;
+    width: 80%;
+  }
+  nav {
+    text-align: left;
+    padding-left: 1em;
+  }
+  @supports (display: grid) {
+    nav ul {
+      flex-direction: column;
+      padding-top: 1em;
+    }
+    header {
+      grid-area: header;
+    }
+    nav {
+      grid-area: nav;
+    }
+    main {
+      grid-area: main;
+    }
+    #gallery {
+      grid-area: gallery;
+    }
+    #wrapper {
+      display: grid;
+      grid-template:
+        "header header"
+        "nav main"
+        / 180px 1fr;
+    }
+    #gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

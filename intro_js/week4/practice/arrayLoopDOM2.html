@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Loop DOM Part 2</title>
+
+    <script>
+        window.onload = ()=>{
+            var linksArray = ['https://google.com', 'https://yahoo.com', 'https://bing.com'];
+            var domText = document.getElementById('domExample');
+            var htmlText = document.getElementById('htmlExample');
+
+            //Loop thru the array - create elements, nodes, & append them
+            for (var i in linksArray) {
+                var createLink = document.createElement('a');
+                var createText = document.createTextNode(linksArray[i]);
+                var createBR = document.createElement('br');
+
+                createLink.setAttribute('href', linksArray[i]);
+                createLink.setAttribute('target', 'new');   //Opens link in a new tab
+                createLink.appendChild(createText);
+
+                domText.appendChild(createLink);
+                domText.appendChild(createBR);
+            }
+
+            //Loop thru the array & build a string expression using innerHTML
+            for (x = 0; x < linksArray.length; x++) {
+                htmlText.innerHTML += `<a href=${linksArray[x]}>${linksArray[x]}</a> <br>`;
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>How to Loop Thru an Array Using Both DOM and innerHTML</h1>
+
+<div id="domExample">
+    <b>The DOM example will appear here:</b>
+    <br>
+</div>
+
+<hr>
+
+<div id="htmlExample">
+    <b>The innerHTML example will appear here:</b>
+    <br>
+</div>
+
+    
+</body>
+</html>

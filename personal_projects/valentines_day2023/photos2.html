@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+    <header>
+       <h1>Some Photos of Us...</h1> 
+    </header>
+    <nav>
+           <a href="index.html"><b>Home</b></a> &nbsp; &#124; &nbsp;
+           <a href="tenthings.html"><b>10 Things I Love About You</b></a> &nbsp; &#124; &nbsp;
+           <a href="photos2.html"><b>Photos</b></a>
+       
+    </nav>
+    <br>
+     
+     <div class="responsive">
+       <div class="gallery">
+         <a target="_blank" href="../assets/windy.jpg">
+           <img src="../assets/windy.jpg" alt="Windy" width="600" height="400">
+         </a>
+         <div class="desc">Twas a windy day in La Jolla...</div>
+       </div>
+     </div>
+     
+     <div class="responsive">
+       <div class="gallery">
+         <a target="_blank" href="../assets/sailing2.jpg">
+           <img src="../assets/sailing2.jpg" alt="First Sailing" width="600" height="400">
+         </a>
+         <div class="desc">Our first time sailing together...</div>
+       </div>
+     </div>
+
+     
+     <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="../assets/sailing3.jpg">
+            <img src="../assets/sailing3.jpg" alt="More Sailing" width="600" height="600">
+          </a>
+          <div class="desc">...more sailing...</div>
+        </div>
+      </div>
+     
+     <div class="responsive">
+       <div class="gallery">
+         <a target="_blank" href="../assets/sailing.jpg">
+           <img src="../assets/sailing.jpg" alt="Last Sailing" width="600" height="400">
+         </a>
+         <div class="desc">...and another sailing trip</div>
+       </div>
+     </div>
+   
+     <div class="responsive">
+       <div class="gallery">
+         <a target="_blank" href="../assets/safaripark.jpg">
+           <img src="../assets/safaripark.jpg" alt="Safari Park" width="600" height="400">
+         </a>
+         <div class="desc">Our trip to the Safari Park</div>
+       </div>
+     </div>
+
+     <div class="responsive">
+       <div class="gallery">
+         <a target="_blank" href="../assets/christmas.jpg">
+           <img src="../assets/christmas.jpg" alt="Christmas" width="600" height="400">
+         </a>
+         <div class="desc">Our 2022 Christmas</div>
+       </div>
+     </div>
+
+      
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="../assets/vegas.jpg">
+            <img src="../assets/vegas.jpg" alt="Vegas" width="600" height="400">
+          </a>
+          <div class="desc">Our trip to Vegas</div>
+        </div>
+      </div>
+
+      <div class="responsive">
+        <div class="gallery">
+          <a target="_blank" href="../assets/boat.jpg">
+            <img src="../assets/boat.jpg" alt="Dinner Cruise" width="600" height="400">
+          </a>
+          <div class="desc">Our Christmas Eve dinner cruise (and my first ever cruise)</div>
+        </div>
+      </div>
+   
+     <div class="clearfix"></div>
+   </body>
+   </html>

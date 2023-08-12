@@ -1,0 +1,90 @@
+html, 
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+#introScreen {
+    background-color: aquamarine;
+    height: 80%;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+}
+#gameScreen {
+    display: none;
+    margin: 0 auto;
+    height: 80%;
+    width: 70%;
+}
+#dinoImg{
+    position: absolute;
+    height: 60%;
+    width: 60%;
+    top: 7%;
+    left: 4%;
+}
+#letterBank{
+    position: absolute;
+    right: 4%;
+    top: 7%;
+    height: 60%;
+    width: 20%;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid black;
+    font-size: 1.2rem;
+}
+#inputBtnCont{
+    position: absolute;
+    top: 70%;
+    left: 8%;
+    height: fit-content;
+    width: fit-content;
+}
+#hintCont{
+    position: absolute;
+    top: 88%;
+    left: 7%;
+    height: fit-content;
+    width: fit-content;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+#hint{
+    font-weight: normal;
+}
+#blankSpaces{
+    position: absolute;
+    top: 76%;
+    left: 7%;
+    height: fit-content;
+    width: fit-content;
+}
+.space {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-bottom: 3px solid black;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+  #usedLetters span{
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 5px;
+  }
+  #asteroid{
+    position: absolute;
+    left: 3%;
+    top: -3%;
+    height: 75px;
+    width: 210px;
+    transform: rotate(-130deg);
+    z-index: 1;
+    scale: 1;
+}
+.hide{
+    display: none;
+}

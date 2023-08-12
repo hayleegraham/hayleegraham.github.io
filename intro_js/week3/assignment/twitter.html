@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Twitter Post</title>
+    <script>
+      function showComment() {
+        //get the length of the comments.
+        var commentLength = document.getElementById("comments").value.length;
+        //find the characters left by subtracting 255 - length
+        var charLeft = 255 - commentLength;
+        //Displays characters left in span w/ id numleft
+        document.getElementById("numleft").innerHTML = charLeft;
+        //condition if we go over 255
+        if (charLeft < 1) {
+          //disable the field or just make the value equal to the first 255 characters.
+          //document.getElementById("comments").disabled = true;  --to disable textarea
+
+          //to only show first 255 characters of string
+          document.getElementById("comments").value = document
+            .getElementById("comments")
+            .value.substr([0], [255]);
+          document.getElementById("numleft").innerHTML = 0;
+        }
+      }
+      //Function to display names & comments in HTML
+      var showEnteredComment = () => {
+        //Get fullname value
+        var userName = document.getElementById("fullname").value;
+        //Concat fullname and comments, and display in enteredComment div (keeps adding to div each time enter is clicked)
+        document.getElementById("enteredComment").innerHTML += 
+        `${userName}:<br>${document.getElementById("comments").value}<br>`;
+        //Clears the fullname and comments text boxes
+        document.getElementById("comments").value = "";
+        document.getElementById("fullname").value = "";
+      };
+    </script>
+  </head>
+  <body>
+    <form action="" method="post">
+      <div id="enteredComment"></div>
+      <input
+        type="text"
+        name="fullname"
+        id="fullname"
+        placeholder="Full Name"
+      /><span class="err"></span><br />
+      <div id="showcomment">
+        You have <span id="numleft"></span> characters of your 255 left!
+      </div>
+      <textarea
+        id="comments"
+        maxlength="255"
+        cols="30" rows="10"
+        onkeyup="showComment()"
+      ></textarea>
+      <input
+        type="button"
+        name="enter"
+        value="Enter"
+        onclick="showEnteredComment()"
+      />
+    </form>
+  </body>
+</html>

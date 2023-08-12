@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element</title>
+    <script>
+        const addElement = ()=>{
+                var addToP = document.getElementById('para');
+
+                var createB = document.createElement('b');
+                var createText = document.createTextNode('Hello this is your new element!');
+                var createBR = document.createElement('br');
+
+                addToP.appendChild(createB).append(createText);
+                addToP.appendChild(createBR);
+        }
+
+        window.onload = ()=> {
+            document.getElementById('addButton').onclick = addElement;
+        }
+    </script>
+</head>
+<body>
+    <p id="para">Add an element to the page inside this paragraph: </p>
+    <br>
+    <button id="addButton">Click to add element</button>
+</body>
+</html>

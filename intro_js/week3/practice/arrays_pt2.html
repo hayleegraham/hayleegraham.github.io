@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays Part 2</title>
+</head>
+<body>
+
+
+<script>
+    //Declares array w/ 4 elements, declares var sum
+    var totals = [141.95, 212.95, 411, 10.95];
+    var sum = 0
+    //Loop that runs for the length of the totals array (4)
+    for (var i = 0; i < totals.length; i++) {
+        //Adds all elements in totals array together 
+        sum += totals[i];
+    }
+
+
+    //How to do the same loop as above, but as a "for-of" loop
+    var sum2 = 0
+    for (var total of totals) {
+        sum2 += total;
+    }
+    console.log(sum2)
+
+
+    //Gets average by dividing sum by length of totals array (4)
+    var average = sum / totals.length;
+
+    var totalsString = "";
+    for (var i = 0; i < totals.length; i++) {
+        totalsString += totals[i] + "\n"
+    }
+    alert(`The totals are:\n${totalsString}\n Sum: ${sum.toFixed(2)}\n Average: ${average.toFixed(2)}`)
+
+    //Example of "for-in" loop
+    //For-in loops will NOT include undefined elements, a normal for loop will
+    var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    var numbersString = "";
+    delete numbers[2]
+
+    // .push adds elements to the end of the array & changes lenth of array
+    numbers.push(11, 12);
+    // .pop deletes the last element from the end of array & changes length of array
+    numbers.pop();
+    // .unshift adds elements to the beginning of the array & changes array length
+    numbers.unshift(2, 0);
+    // .shift deletes the first element in the array & changes array length
+    numbers.shift();
+    // .join concats elements in array with a seperator (will be comma if left blank, or you can declare your own seperator between ())
+    console.log("join", numbers.join('|'));
+    // .toString concats elements in array as a string w/ commas between (same as .join but w/o the option to choose own seperator)
+    console.log("toString", numbers.toString());
+
+    for (var index in numbers) {
+        //Concats numbers in array w/ a space
+        //First time loop runs, numbersString = numbers[0] which is 1, loop adds a space & gets next num, etc.
+        numbersString += numbers[index] + " ";
+    }
+    document.write(numbersString);
+
+    
+</script>
+</body>
+</html>

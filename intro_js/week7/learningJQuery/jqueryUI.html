@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery UI</title>
+    <style>
+     #drag{
+        width: 200px;
+        height: 200px;
+        background-color: teal;
+     }
+     #fade{
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+     }
+    </style>
+    <script src="js/JQuery.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+        $("#drag").draggable({
+            stop: function(){
+                $("#drag").toggle("explode")
+                $("#drag").toggle("explode")
+            }
+        })
+        $("#accordion").accordion({
+            collapsible: true, 
+            active: null
+        })
+        $("#fade").fadeOut(5000).slideDown(1000)
+        
+      });
+    </script>
+  </head>
+  <body>
+   <div id="drag"></div>
+   <div id="fade"></div>
+   <div id="accordion">
+    <h3>First header</h3>
+    <div>First content panel
+        <div>Content</div>
+    </div>
+    <h3>Second header</h3>
+    <div>Second content panel</div>
+  </div>
+  </body>
+</html>

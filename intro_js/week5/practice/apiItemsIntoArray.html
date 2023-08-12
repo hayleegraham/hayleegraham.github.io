@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request & How to Put API Date into Arrays</title>
+    <script>
+        /*
+        We are going to:
+        fill an array with images from an image api : https://dog.ceo/api/breeds/image/random
+        we want it to look like this when complete: 
+        ['http://www.randomDogImage1.jpg', 'http://www.randomDogImage1.jpg', 'http://www.randomDogImage1.jpg']
+        */
+
+        const getImage = async ()=> {
+            const apiData = await fetch('https://dog.ceo/api/breeds/image/random');
+            const apiJson = await apiData.json();
+            const imgURL = apiJson.message;
+            console.log('Got Image::', imgURL);
+            return imgURL;
+        }
+        
+        const totalCards = 6;
+        let imagesArray = [];
+        const getImages = async ()=> {
+            //Make a loop that runs 'totalCards' amount of times
+            //On each interation:
+            //get image url & add it to an array
+
+            for (var i = 0; i < totalCards; i++){
+                const imageURL = await getImage();
+                imagesArray.push(imageURL)
+            }
+            
+            console.log('Img Array::', imagesArray);
+        }
+        const init = async()=> {
+            await getImages();
+        }
+        window.onload = init;
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

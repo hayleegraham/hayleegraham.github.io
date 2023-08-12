@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Match Game</title>
+    <style>
+        #cardContainer{
+            position:absolute;
+            background: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 700px;
+        }
+        .card{
+            display: inline-block;
+            width: 30%;
+            height: 30%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 0.8s ease;
+            background-color: teal;
+        }
+        .front, 
+        .back{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            text-align: center;
+        }
+        .back,
+        .flipCard{
+            transform: rotateY(180deg);
+        }
+        .dogImgs{
+            width: 150px;
+            height: 210px;
+        }
+    </style>
+    <script>
+/*
+    functionality:
+        start game
+            //Start button onClick initiates game, creating the cards & starts timer (display in div)
+
+            initializer
+            create the board
+                create cards
+                    //Create card divs, each with a 'front' div and 'back' div for flip effect
+                    //Create 'front' divs with images (must have 2 of each image)
+
+                add cards to cardContainer
+                    //Display divs in random order w/ 'back' side visable
+
+                add click listeners to them
+                    //Card divs onClick flip (toggle) to reveal 'front' div images -- card div CSS needed: transform-style: preserve-3d
+
+
+        click card
+            is it the first card
+
+            are we matching cards
+                //After 2 cards are flipped, check if the images match
+
+            does this cause success or fail
+                //If they match, remove those cards & add count to # of matches made
+                //If they do NOT match, flip back over to 'back' side div
+            
+            finish game
+                //Once all card divs are matched & removed, stop timer, display "You won" & timer value
+
+        restart game
+            //Restart button re-initiates game with cards in new random order
+            //Can add levels eventually, user chooses easy, med, hard & each display more/less total cards
+
+*/
+    async function getDogPics(){
+            const response = await fetch('https://dog.ceo/api/breeds/image/random');
+            const dogPics = await response.json();
+            return dogPics.message;
+        }
+
+    async function startGame() {
+        var cardContainer = document.getElementById('cardContainer');
+        console.log('working')
+
+        for (var i = 0; i < 9; i++) {
+            var createCard = `<div class= "card"></div>`;
+            cardContainer.innerHTML += createCard;
+            var cardsArray = document.getElementsByClassName('card');
+        }
+        for (var j in cardsArray){
+                var createFront = `<div class= "front"></div>`;
+                var createBack = `<div class= "back"></div>`;
+                cardsArray[j].innerHTML += createFront;
+                cardsArray[j].innerHTML += createBack;
+                var frontArray = document.getElementsByClassName('front');
+            }
+        for (var x in frontArray){
+
+
+            if (x % 2 == 0){
+                var createImgDiv = `<img class= "dogImgs" src="${await getDogPics()}" alt="Dog">`;
+                frontArray[x].innerHTML += createImgDiv;
+
+                 const clone = ()=> {
+                    var y = x + 1;
+                    var frontArray = document.getElementsByClassName('front');
+                    var dogImgs = document.getElementsByClassName('dogImgs');
+                    var dogImg = dogImgs[x];
+                    var imgClone = dogImg.cloneNode();
+                    console.log(imgClone);
+                }
+                clone();
+            }
+        } 
+    }
+
+
+    window.onload = function() {
+        document.getElementById('startButton').onclick = startGame;
+    }
+    
+    
+    </script>
+</head>
+<body>
+    <div id="timerContainer"></div>
+    <div id="cardContainer"></div>
+    <button id="startButton">Start Game</button>
+    
+    
+
+
+</body>
+</html>

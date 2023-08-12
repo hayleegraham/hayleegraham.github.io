@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Iframe Example</title>
+<meta charset="utf-8"> 
+<style>
+/* Create a container element that uses relative positioning */
+.mycontainer { position: relative;
+		       width: 100%;
+		       overflow: hidden;
+		       padding-top: 56.25%; 
+		 /* Calculate the padding value using the aspect ratio of the video
+		    16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* These styles configure the iframe to fill the parent element */
+.mycontainer iframe { width: 100%;
+		  		      height: 100%;
+				      position: absolute;
+		 	   	      top: 0;
+			  	      left: 0;
+			 	      bottom: 0;
+		 		      right: 0; }
+</style>    
+    
+</head>
+<body>
+<h1>Iframe Example</h1>
+<div class="mycontainer">
+<iframe  src="https://www.youtube.com/embed/2CuOug8KDWI" allowfullscreen>
+</iframe>
+</div>
+</body>
+</html>

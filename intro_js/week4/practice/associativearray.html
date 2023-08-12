@@ -1,0 +1,20 @@
+
+<script type="text/javascript">
+<!--
+function which_car()
+{
+var my_cars= new Array()
+my_cars["cool"]="Mustang";
+my_cars["family"]="Station Wagon";
+my_cars["big"]="SUV";
+
+var car_type=prompt("What type of car do you like?","");
+
+if ((car_type=="cool") || (car_type=="family") || (car_type=="big"))
+  alert("I think you should get a(n) "+my_cars[car_type]+".");
+else
+  alert("I don't really know what you should get. Sorry.");
+}
+//-->
+</script>
+<input type="button" onClick="which_car()" value="Go!"/>

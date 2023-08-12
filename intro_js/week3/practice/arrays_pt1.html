@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays Part 1</title>
+</head>
+<body>
+    
+<script>
+//An array with 4 assigned values, can be a string or numbers
+var rates = new Array (4);
+rates [0] = 10
+rates [1] = 15
+rates [2] = "Hello"
+rates [3] = 25
+
+console.log(rates[0])
+console.log(rates[1])
+console.log(rates[2])
+
+//Also an array with 4 assigned values.
+var numbers = [1, 2, 3, 4];
+
+//Deletes the 3rd value in the array (arrays begin at 0)
+delete numbers[2]
+console.log("numbers", numbers)
+console.log(numbers[1])
+
+//Declaring an empty array
+var nums = [];
+//Creates a loop that puts numbers 1 thru 10 into the array
+for (var i = 0; i < 10; i++) {
+    nums[i] = i + 1;
+}
+//Declares a var as an empty string
+var numsString = "";
+//Creates loop that runs for length of the nums array
+for (var i = 0; i < nums.length; i++) {
+    //Concat the numbers with a space between in nums array as string numsString
+    numsString += nums[i] + " ";
+}
+//Allerts the string created above
+alert(numsString)
+
+</script>
+</body>
+</html>

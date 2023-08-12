@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Form Using DOM</title>
+    <style>
+        .err{
+            color: red;
+            font-style: italic;
+        }
+    </style>
+    <script>
+        function calcArea () {
+            //Clear out error messages -- can also use tag name
+            for (var i = 0; i < document.getElementsByClassName('err').length; i++) {
+                document.getElementsByClassName('err')[i].firstChild.nodeValue = "";
+            }
+
+            var userWidth = document.getElementById('width');
+            var userHeight = document.getElementById('height');
+
+            var userWidthValue = userWidth.value;
+            var userHeightValue = userHeight.value;
+
+            if (userWidthValue <= 0 || isNaN(userWidthValue)) {
+                userWidth.nextElementSibling.firstChild.nodeValue = "Please enter a valid number";
+                userWidth.focus();
+            }else if (userHeightValue <= 0 || isNaN(userHeightValue)) {
+                userHeight.nextElementSibling.firstChild.nodeValue = "Please enter a valid number";
+                userHeight.focus();
+            }else {
+                var areaValue = userHeightValue * userWidthValue;
+                document.getElementById('result').innerHTML = `The area is: ${areaValue}!`;
+            }
+        }
+        function clearForm() {
+            //Clear out form values
+            for (var i = 0; i < document.getElementsByTagName('input').length; i++){
+                document.getElementsByTagName('input')[i].value = "";
+            }
+            //Clear out result
+            document.getElementById('result').innerHTML = "";
+        }
+
+        window.onload = function(){
+            document.getElementById('btnCalc').onclick = calcArea;
+            document.getElementById('btnClear').onclick = clearForm;
+        }
+    </script>
+</head>
+<body>
+    <h1>Please fill out the following form:</h1>
+
+    <form>
+
+        <label for="width">Width:</label>
+        <input type="text" id="width"> <span class="err"> </span>
+        <br>
+        <br>
+
+        <label for="height">Height:</label>
+        <input type="text" id="height"> <span class="err"> </span>
+        <br>
+        <br>
+
+        <div id="result"></div>
+        <br>
+        <br>
+
+        <button type="button" id="btnCalc">Calculate Area</button>
+        <br>
+        <br>
+        <button type="button" id="btnClear">Clear Form</button>
+    </form>
+</body>
+</html>

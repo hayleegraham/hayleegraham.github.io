@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ch.3/4 Lecture Practice</title>
+  </head>
+  <body>
+    <input type="text" id="totalPrice" placeholder="Total price" />
+    <input
+      type="text"
+      id="userSalesTax"
+      placeholder="Sales tax in decimal form"
+    />
+    <button id="doCalc">Calculate</button>
+
+    <script>
+        
+      // console.log(window);
+      // console.log(document);
+      // console.log(navigator);
+      // console.log(history);
+
+      // var today = new Date();
+      // alert (today)
+      // alert (today.toDateString())
+      // alert (today.getFullYear())
+      // alert (today.getDate())
+      // alert (today.getMonth())
+
+      // Anonymous function with multiple variables passed thru
+      var calculateTax = function (subtotal, taxRate) {
+        var tax = subtotal * taxRate;
+        tax = parseFloat(tax.toFixed(2));
+        return tax;
+      };
+      
+      var $ = (id) =>{
+        return document.getElementById(id)
+      }
+      var showTax = function () {
+        var subtotal = parseFloat($("totalPrice").value);
+        var taxRate = parseFloat($("userSalesTax").value);
+        var salesTax = calculateTax(subtotal, taxRate);
+        document.writeln(`Sales tax amount = $${salesTax}.`);
+      };
+      document.getElementById("doCalc").onclick = showTax;
+    </script>
+  </body>
+</html>

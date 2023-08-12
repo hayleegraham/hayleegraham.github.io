@@ -1,0 +1,128 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+    <title>Calculator - Dynamic</title>
+    <style>
+      table,
+      td {
+        border: 1px solid #000000;
+        
+      }
+      table{
+        background-color: #154040;
+        border-radius: 5%;
+        width: 250px;
+        height: 250px;
+      }
+      td {
+        cursor: pointer;
+        text-align: center;
+        background-color: #b1fdfda2;
+        border-radius: 30%;
+        min-width: 25px;
+      }
+      input{
+        border-radius: 30%;
+        background-color: #bdfdfda8;
+        color: #000000;
+        width: 100%;
+        height: 100%;
+        text-align: right;
+        font-size: 1.5rem;
+      }
+      .notNum{
+        background-color: #cbfefee7;
+      }
+    </style>
+    <script>
+      // Variable that will save the last value clicked
+       var lastNumEntered = "";
+
+      //Function that returns boolean based on if last clicked item was a number or not
+      const isLastNum = () => {
+        if (lastNumEntered == "+" ||
+            lastNumEntered == "-" ||
+            lastNumEntered == "*" ||
+            lastNumEntered == "/" ||
+            lastNumEntered == "."
+          ) {
+            //If last value clicked is not a number
+            return false
+          } else {
+            //If last value clicked is a number
+            return true
+          }
+      }
+
+      //Funtion only called when C is clicked
+      const clearAnswer = () => {
+        document.getElementById("answer").value = "";
+      }
+
+      //Function only called when = is clicked
+      const calculate = () => {
+        //If last value clicked before "=" is a number, then run calculation
+        if (isLastNum()){
+            document.getElementById("answer").value = eval(document.getElementById("answer").value);
+        //If last value clicked before "=" is NOT a number, show error message
+        }else{
+            document.getElementById("answer").value = "Invalid Operation";  
+        }
+      };
+
+      //Function that fires when an element with .btn gets clicked
+      const numClicked = (numEntered) => {
+        
+        //Adds inner HTML of clicked .btn to the inner HTML of div w/ #answer
+        document.getElementById("answer").value += numEntered.target.innerHTML;
+
+        lastNumEntered = numEntered.target.innerHTML;
+      };
+
+      window.onload = () => {
+        //Gets all elements with .btn
+        var btns = document.querySelectorAll(".btn");
+        console.log(btns);
+        //For each element in btns
+        for (var btn of btns) {
+          //Adds a click listener to each button
+          btn.onclick = numClicked;
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <td colspan="3"><input type="text" id="answer" disabled="" /></td>
+          <td class="notNum" onclick="clearAnswer()">C</td>
+        </tr>
+        <tr>
+          <td class="btn">1</td>
+          <td class="btn">2</td>
+          <td class="btn">3</td>
+          <td class="btn notNum">+</td>
+        </tr>
+        <tr>
+          <td class="btn">4</td>
+          <td class="btn">5</td>
+          <td class="btn">6</td>
+          <td class="btn notNum">-</td>
+        </tr>
+        <tr>
+          <td class="btn">7</td>
+          <td class="btn">8</td>
+          <td class="btn">9</td>
+          <td class="btn notNum">*</td>
+        </tr>
+        <tr>
+          <td class="btn notNum">.</td>
+          <td class="btn">0</td>
+          <td class="notNum" onclick="calculate()">=</td>
+          <td class="btn notNum">/</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

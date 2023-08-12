@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Stroke Events</title>
+    <script>
+        var showText = ()=> {
+            document.getElementById("textHere").innerHTML = document.getElementById("blogPost").value
+        }
+    </script>
+</head>
+<body>
+    <div id="textHere"></div>
+    <textarea name="blogPost" id="blogPost" cols="30" rows="10" onkeyup="showText();"></textarea>
+    
+
+</body>
+</html>

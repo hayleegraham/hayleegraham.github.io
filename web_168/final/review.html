@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Entertainment Reviews::Review</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link href="css/review.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+    <body class="bg-jamul-teal">
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Entertainment Reviews</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" href="form.html">Add New Review</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-9">
+                    <article>
+                        <!-- Main header-->
+                        <header class="mb-2 review-header">
+                            <img src="assets/Images/jamul-logo.svg" alt="Jamul Logo" class="d-inline-block">
+                            <!-- Band Name-->
+                            <div class="d-inline-block"><h1 class="fw-bolder review-h1 fs-2">80z All Stars <span class="fs-5">- May 13th, 2023</span></h1>
+                            <h2 class="review-h1 fs-4">JIVe</h2></div>
+                        </header>
+                        
+                        <!-- Video-->
+                        <video width="900" height="400" controls preload="auto" class="img-fluid rounded mb-3 mt-2" src="https://saishostaging.com/assets/flower/80z-all-stars_5-13-23_1.mp4"></video>
+                        <hr>
+                        <h3 class="fst-italic fs-4 review-by">Review By: Haylee Graham</h3>
+                        <hr>
+                        <!-- Post content-->
+                        <section class="mb-5 review-text rounded p-5 fs-6">
+                            <h4>Review:</h4>
+                            <hr>
+                            <p class="mb-3">80z All Stars is a consistantly good band with talented musicians and crowd-pleasing song choices. Their dance moves never fail to get the guests up and dancing with them.</p>
+                            <p class="mb-3">They play the hits of the 80's; from Billy Joel to Prince to "Hey Mickey", they do it all. The crowd loves the nostalgic music and themed outfits that the band wears.</p>
+                            <p class="mb-3">Their choreographed dance routines are definitely the icing on the cake. They are so fun to watch on-stage, and their energy is contagious.</p>
+                            <p class="mb-3">The band members are all very professional and easy to work with. They bring most of their own high-end equiptment, creating a high-quality sound and an easier set-up process for the AV team.</p>
+                            <p class="mb-3">I would recommend keeping 80z All Stars in the regular rotation for the JIVe venue as they are a crowd and staff favorite.</p>
+                        </section>
+                    </article>
+                   
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-3">
+                    <!-- Side widget-->
+                    <div class="card review-details">
+                        <div class="card-header fs-4 fw-bold">80z All Stars</div>
+                        <div class="card-body fw-bold"><!-- Performance Date-->
+                            Date: <span class="text-muted fw-normal">5-13-23</span><br>
+                            <!-- Performance Time-->
+                            Time: <span class="text-muted fw-normal">9:00pm - 1:00am</span><br>
+                            <!-- Venue-->
+                            Venue: <span class="text-muted fw-normal">JIVe</span><br>
+                            <!-- Crowd Size-->
+                            Crowd Size: <span class="text-muted fw-normal">95</span><br>
+                            <!-- Star Rating-->
+                            Rating: 
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Haylee Graham 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/review.js"></script>
+        <!-- This is for the side widget scroll feature, my boyfriend assisted me with the JavaScript -->
+        <script>
+            window.addEventListener("load", (event) => {
+              // -246
+              // review-details
+              let isMobile = false
+              window.addEventListener("scroll", resizeHandler);
+              addEventListener("resize", resizeHandler);
+              var reviewDetails = document.getElementsByClassName('review-details')[0];
+              resizeHandler()
+              function resizeHandler () {
+                var mq = window.matchMedia("(max-width: 992px)");
+                if (mq.matches) {
+                  isMobile = true
+                } else {
+                  isMobile = false
+                }
+                onScroll()
+              }
+              
+              
+              function onScroll() {
+                var body = document.body;
+                const { top } = body.getBoundingClientRect();
+                console.log('top',top)
+                if (top < -246 && !isMobile) reviewDetails.classList.add('position-fixed')
+                else reviewDetails.classList.remove('position-fixed')
+              }
+            });
+          </script>
+    </body>
+</html>

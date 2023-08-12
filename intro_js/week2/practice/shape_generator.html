@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shape Generator</title>
+    <style>
+      body {
+        overflow: hidden;
+      }
+      .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .square,
+      .rect,
+      .circle {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: black solid thin;
+      }
+      .triangle {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      //While & For loops examples
+
+      // var i = 1;
+      // while (i < 100) {
+      //     console.log('while', i);
+      //     i+=5;
+      // }
+      // for (i=100; i > 0; i -= 5){
+      //     console.log('for', i)
+      // }
+
+      //Function that returns random number between the min/max you pass it
+      var getRand = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      };
+
+      //Function that returns CSS RGBA color with random colors & opacity
+      //maxOPacity parameter will set max val for random opacity, default is 100
+      const getRandRBGA = (maxOpacity = 100) => {
+        return `rgba(${getRand(0, 255)},${getRand(0, 255)},${getRand(
+          0,
+          255
+        )},0.${getRand(1, maxOpacity)})`;
+      };
+
+      //Function that returns div styled as a rectangle with random design
+      var createRectangle = () => {
+
+        //Defining properites  **ALL STYLES MUST END W/ SEMICOLON;
+        var bgColor = `background-color:${getRandRBGA(5)};`;
+        var width = `width:${getRand(10, 200)}px;`;
+        var height = `height:${getRand(10, 200)}px;`;
+        var left = `left:${getRand(-50, window.innerWidth)}px;`;
+        var top = `top:${getRand(-100, window.innerHeight)}px;`;
+        var rotate = `transform:rotate(${getRand(0, 180)}deg);`;
+        var zIndex = `z-index:${getRand(0, 600)};`;
+        var boxShadow = `box-shadow:${getRand(5, 20)}px ${getRand(
+          5,
+          20
+        )}px ${getRand(5, 20)}px ${getRand(1, 20)}px ${getRandRBGA()};`;
+
+        //Create div element with random styles
+        var rect = `<div class="rect" style="${bgColor} ${width} ${height} ${left} ${top} ${rotate} ${boxShadow} ${zIndex}"></div>`;
+
+        return rect;
+      };
+
+      //Function that returns div styled as a circle with random design
+      var createCircle = () => {
+
+        var size = getRand(50, 200);
+        var bgColor = `background-color:${getRandRBGA(5)};`;
+        var left = `left:${getRand(-50, window.innerWidth)}px;`;
+        var top = `top:${getRand(-100, window.innerHeight)}px;`;
+        var width = `width:${size}px;`;
+        var height = `height:${size}px;`;
+        var zIndex = `z-index:${getRand(0, 600)};`;
+        var boxShadow = `box-shadow:${getRand(5, 20)}px ${getRand(
+          5,
+          20
+        )}px ${getRand(5, 20)}px ${getRand(1, 20)}px ${getRandRBGA()};`;
+
+        var circle = `<div class="circle" style="border-radius:50%; border: 0.5px solid black; ${width} ${height} ${bgColor} ${left} ${top} ${boxShadow} ${zIndex}"></div>`;
+
+        return circle;
+      };
+
+      //Function that returns div styled as a square with random design
+      var createSquare = () => {
+
+        var size = getRand(50, 200);
+        var bgColor = `background-color:${getRandRBGA(5)};`;
+        var left = `left:${getRand(-50, window.innerWidth)}px;`;
+        var top = `top:${getRand(-100, window.innerHeight)}px;`;
+        var width = `width:${size}px;`;
+        var height = `height:${size}px;`;
+        var zIndex = `z-index:${getRand(0, 600)};`;
+        var rotate = `transform:rotate(${getRand(0, 180)}deg);`;
+        var boxShadow = `box-shadow:${getRand(5, 20)}px ${getRand(
+          5,
+          20
+        )}px ${getRand(5, 20)}px ${getRand(1, 20)}px ${getRandRBGA()};`;
+
+        var square = `<div class="square" style="${bgColor} ${width} ${height} ${left} ${top} ${rotate} ${boxShadow} ${zIndex}"></div>`;
+
+        return square;
+      };
+
+      //Function that returns div styled as a triangle with random design
+      //**Triangle does not work well w/ borders/box shadows
+      const createTriangle = () => {
+
+        var randColor = getRand(100000, 999999);
+        const size = getRand(10, 100);
+        var bl = `border-left: ${size}px solid transparent;`;
+        var br = `border-right: ${size}px solid transparent;`;
+        var bb = `border-bottom: ${size}px solid #${randColor};`;
+        var rotate = `transform: rotate(${getRand(0, 180)}deg);`;
+        var left = `left:${getRand(0, window.innerWidth)}px;`;
+        var top = `top:${getRand(-200, window.innerHeight)}px;`;
+        var zIndex = `z-index:${getRand(0, 600)};`;
+
+        const triangle = `<div class="triangle" style="${left} ${top} ${bl} ${bb} ${br} ${rotate} ${zIndex}"></div>`;
+
+        return triangle;
+      };
+
+      //Function that creates a defined number of shapes based on the shape & count parameters passed
+      //Shape parameter is a function that returns a shape element
+      const renderShape = (shape, count = 400) => {
+
+        //Creates content variable that will hold all shape elements
+        let content = "";
+
+        //Loops as many times as count is
+        for (var i = 0; i < count; i++) {
+          //Adds shape element to content string
+          content += shape();
+        }
+        //Adds HTML content to div.container; content = random shapes 
+        document.querySelector(".container").innerHTML += content;
+      };
+
+      //Calls renderShape function for each shape type with defined count
+      renderShape(createRectangle, 200);
+      renderShape(createSquare, 100);
+      renderShape(createTriangle, 150);
+      renderShape(createCircle, 100);
+    </script>
+  </body>
+</html>

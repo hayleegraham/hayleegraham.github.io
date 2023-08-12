@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Entertainment Reviews::Reviews</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <link href="css/reviews.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/custom.css">
+    </head>
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Entertainment Reviews</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="form.html">Add New Review</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page header with logo and tagline-->
+    <header class="bg-jamul py-5 border-bottom mb-4">
+      <div class="asset-container">
+          <img src="assets/Images/jamul-logo.svg" alt="Jamul Logo">
+          <img class="fade-out" src="assets/Images/jamul-logo-covered.svg" alt="Jamul Logo Filled">
+      </div>
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="fw-bolder">Entertainment Review Form</h1>
+                <p class="lead mb-0">Add a new performer review using the form below.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- New review form -->
+    <form class="review-form" action="submit">
+        <p class="fw-light fst-italic">* Required feilds are marked with an asterisk.</p>
+        
+        <div class="mb-3">
+            <label for="entertainerName" class="form-label">* Entertainer Name:</label>
+            <input type="text" class="form-control" id="entertainerName" placeholder="Ex. Floyd Armstrong" required>
+        </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="startDate" class="form-label">* Performance Start Date & Time:</label>
+            <input type="datetime-local" class="form-control" id="startDate" required>
+        </div>
+        <div class="col mb-3">
+            <label for="endDate" class="form-label">* Performance End Date & Time:</label>
+            <input type="datetime-local" class="form-control" id="endDate" required>
+        </div>
+    </div>
+        <div class="mb-3">
+            <label for="venueSelect" class="form-label">Venue:</label>
+            <select class="form-select" aria-label="Select Venue" id="venueSelect" required>
+                <option selected label="Select a venue"></option>
+                <option value="JIVe">JIVe</option>
+                <option value="Prime Cut">Prime Cut</option>
+                <option value="Loft 94">Loft 94</option>
+                <option value="Casino Floor">Casino Floor</option>
+                <option value="Rooftop">Rooftop</option>
+                <option value="Tony Gwynn's">Tony Gwynn's</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="crowdSize" class="form-label">Crowd Size:</label>
+            <input type="text" class="form-control" id="crowdSize" placeholder="Ex. 55">
+        </div>
+        <div class="genres row mb-3">
+            <label class="form-label"> Music Genre(s):</label>
+            <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="80s">
+                <label class="form-check-label" for="80s">
+                  80's Hits
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="disco">
+                <label class="form-check-label" for="disco">
+                  70's Hits/Disco
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="top40s" checked>
+                <label class="form-check-label" for="top40s">
+                  Top 40's/Dance Music
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="funk" checked>
+                <label class="form-check-label" for="funk">
+                  Funk
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="R&B" checked>
+                <label class="form-check-label" for="R&B">
+                  R&B
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="hip-hop" checked>
+                <label class="form-check-label" for="hip-hop">
+                  Hip-Hop
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="pop" checked>
+                <label class="form-check-label" for="pop">
+                  Pop
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="modernRock" checked>
+                <label class="form-check-label" for="modernRock">
+                  Modern Rock
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="classicRock" checked>
+                <label class="form-check-label" for="classicRock">
+                  Classic Rock
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="latin" checked>
+                <label class="form-check-label" for="latin">
+                  Latin
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="country" checked>
+                <label class="form-check-label" for="country">
+                  Country
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="oldies" checked>
+                <label class="form-check-label" for="oldies">
+                  Oldies
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="softDinnerMusic" checked>
+                <label class="form-check-label" for="softDinnerMusic">
+                  Soft Dinner Music
+                </label>
+              </div>
+              <div class="col form-check">
+                <input class="form-check-input" type="checkbox" value="" id="djHits" checked>
+                <label class="form-check-label" for="djHits">
+                  DJ Hits
+                </label>
+              </div>
+        </div>
+        <div class="mb-3">
+            <label for="reviewText" class="form-label">* Review:</label>
+            <textarea class="form-control" id="reviewText" placeholder="Type your review here" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="reviewerName" class="form-label">* Reviewer's Name:</label>
+            <input type="text" class="form-control" id="reviewerName" placeholder="Your Name" required>
+        </div>
+        <div class="mb-3">
+            <label for="starRatingSelect" class="form-label">* Overall Rating:</label>
+            <select class="form-select" aria-label="Select Venue" id="starRatingSelect" required>
+                <option selected label="Select a rating value" ></option>
+                <option value="1">Awful (1/5)</option>
+                <option value="2">Not Great (2/5)</option>
+                <option value="3">Mediocre/Average (3/5)</option>
+                <option value="4">Good (4/5)</option>
+                <option value="5">Amazing! (5/5)</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="reviewerEmailAddress" class="form-label">* Reviewer's Email Address:</label>
+            <input type="email" class="form-control" id="reviewerEmailAddress" placeholder="youremail@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="formFileMultipleVideo" class="form-label">Upload performance videos here:</label>
+            <input class="form-control" type="file" id="formFileMultipleVideo" multiple>
+        </div>
+        <div class="mb-3">
+            <label for="formFileThumbnail" class="form-label">Upload thumbnail photo here:</label>
+            <input class="form-control" type="file" id="formFileThumbnail">
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn jamul-input-styles mb-3 mt-3">Submit</button>
+          </div>
+    </form>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Haylee Graham</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/reviews.js"></script>
+</body>
+</html>

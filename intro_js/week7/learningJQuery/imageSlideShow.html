@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slide Show</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 380px;
+        height: 350px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 3px solid blue;
+      }
+      h1,
+      h2,
+      ul,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        padding-bottom: 0.25em;
+        color: blue;
+      }
+      h2 {
+        font-size: 120%;
+        padding: 0.5em 0;
+      }
+      img {
+        height: 250px;
+      }
+      #slides img {
+        display: none;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let nextSlide = $("#slides img:first-child");
+
+        setInterval(
+          () => {
+            $("#caption").fadeOut(1000);
+            $("#slide").fadeOut(1000, () => {
+              if (nextSlide.next().length == 0) {
+                nextSlide = $("#slides img:first-child");
+              } else {
+                nextSlide = nextSlide.next();
+              }
+              const nextSlideSrc = nextSlide.attr("src");
+              const nextSlideCap = nextSlide.attr("alt");
+              $("#slide").attr("src", nextSlideSrc).fadeIn(1000);
+              $("#caption").text(nextSlideCap).fadeIn(1000);
+            });
+          },
+
+          3000
+        );
+      });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <h1>Fishing Slide Show</h1>
+      <h2 id="caption">Casting on the Upper Kings</h2>
+      <img id="slide" src="assets/images/casting1.jpg" alt="" />
+      <div id="slides">
+        <img
+          src="assets/images/casting1.jpg"
+          alt="Casting on the Upper Kings"
+        />
+        <img
+          src="assets/images/casting2.jpg"
+          alt="Casting on the Lower Kings"
+        />
+        <img
+          src="assets/images/catchrelease.jpg"
+          alt="Catch and Release on the Big Horn"
+        />
+        <img src="assets/images/fish.jpg" alt="Catching on the South Fork" />
+        <img src="assets/images/lures.jpg" alt="The Lures for Catching" />
+      </div>
+    </main>
+  </body>
+</html>

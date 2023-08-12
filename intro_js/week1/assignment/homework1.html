@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 1 - Variables</title>
+  </head>
+  <body>
+    <script>
+      //Displays prompt asking user to confirm if they want to do math.
+      var doMath = confirm("Would you like to do some math?");
+      if (doMath == true) {
+        //Runs function that handles prompt/answer.
+        showNumbPrompt();
+      } else {
+        //Alert shown if user does not confirm they want to do math, then routed to new url.
+        alert("Oh, you'll probably be needing this then...");
+        window.open(
+          "https://www.amazon.com/Basic-Maths-Dummies-Colin-Beveridge/dp/1119974526/ref=asc_df_1119974526/?tag=hyprod-20&linkCode=df0&hvadid=312064598816&hvpos=&hvnetw=g&hvrand=16977042115703327093&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9031340&hvtargid=pla-457907757052&psc=1",
+          "_self" // <- _blank makes it open in a new window, _self makes it open in same window.
+        );
+      }
+
+      //Function that handles prompt/answer.
+      function showNumbPrompt() {
+        //Display prompt for user to enter first number.
+        var requestMsg = "Enter a number.";
+        firstNumber = prompt(requestMsg);
+
+        //Display prompt for user to enter second number.
+        var requestMsg = "Enter another number.";
+        secondNumber = prompt(requestMsg);
+
+        //Turns strings to numbers, adds them, and saves as result.
+        result = parseFloat(firstNumber) + parseFloat(secondNumber);
+
+        //Displays results on webpage.
+        // document.write("You entered " + firstNumber +  " + " + secondNumber + " which equals " + result + "!");
+        document.write(
+          `You entered ${firstNumber} + ${secondNumber} which equals ${result}! Congrats on learning math!`
+        );
+
+        //Adds div that restarts promt/answer function when clicked.
+        document.writeln(
+          "<div onclick='showNumbPrompt()'>Click here to do more math!</div>"
+        );
+      }
+    </script>
+  </body>
+</html>

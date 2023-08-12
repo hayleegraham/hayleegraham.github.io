@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #blankSpaces {
+        margin-top: 100px;
+        margin-left: 100px;
+      }
+      .space {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-bottom: 3px solid black;
+      }
+      #letterBank {
+        position: absolute;
+        right: 4%;
+        top: 7%;
+        height: 60%;
+        width: 20%;
+        padding: 5px;
+        text-align: center;
+        border: 2px solid black;
+      }
+      #usedLetters span {
+        padding: 3px;
+      }
+    </style>
+    <script src="js/JQuery.js"></script>
+    <script>
+      $(document).ready(function () {
+        // const test = async () => {
+        //   await getImages(200);
+        //   console.log("LENGTH::", imagesArray.length);
+        //   document.body.innerHTML = "";
+        //   for (var i = 0; i < imagesArray.length; i++) {
+        //     document.body.innerHTML += `<img width='50' src="${imagesArray[i]}" />`;
+        //   }
+        // };
+        const word = "HAYLEE";
+        const spacesCont = $("#blankSpaces");
+
+        for (var i = 0; i < word.length; i++) {
+          spacesCont.append(`<div class="space" index="${i}"></div>
+          &nbsp;`);
+        }
+
+        const spaceEl = $(".space");
+
+        const checkLetter = () => {
+          const userLetter = $("#letterInpt").val().toUpperCase();
+          const index = word.indexOf(userLetter);
+
+          if (index == -1) {
+            $("#usedLetters").append(`<span>${userLetter}</span>`);
+          } else {
+            let totalBlanks = 0;
+            let letterPos = [];
+
+            for (var i = 0; i < word.length; i++) {
+              if (word.charAt(i) == userLetter) {
+                const indexPos = i;
+                letterPos.push(indexPos);
+              }
+            }
+            for (var i = 0; i < letterPos.length; i++) {
+              const matchedLetters = $(`div[index="${letterPos[i]}"]`);
+              matchedLetters.text(userLetter);
+            }
+
+            for (const space of spaceEl) {
+              if ($(space).text() == "") {
+                totalBlanks += 1;
+              }
+            }
+
+            if (totalBlanks == 0) {
+              alert("You win!");
+            }
+          }
+          $("#letterInpt").val("");
+          $("#letterInpt").focus();
+        };
+        $("#submitBtn").click(checkLetter);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="letterBank">
+      Used Letter Bank
+      <hr />
+      <div id="usedLetters"></div>
+    </div>
+    <input id="letterInpt" type="text" />&nbsp;
+    <button id="submitBtn">Submit</button>
+    <div id="blankSpaces"></div>
+  </body>
+</html>

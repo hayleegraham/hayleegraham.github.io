@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Match Game</title>
+    <style>
+      #cardContainer {
+        position: absolute;
+        background: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 700px;
+      }
+      .card {
+        display: inline-block;
+        width: 30%;
+        height: 30%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: all 0.8s ease;
+      }
+      .front,
+      .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        text-align: center;
+      }
+      .front,
+      .flipCard {
+        transform: rotateY(180deg);
+      }
+
+      .dogImgs,
+      .cardBack {
+        width: 150px;
+        height: 210px;
+      }
+      .hideButton{
+        display: none;
+      }
+    </style>
+    <script>
+      /*
+   functionality:
+       start game
+           //Start button onClick initiates game, creating the cards & starts timer (display in div)
+
+
+           initializer
+           create the board
+               create cards
+                   //Create card divs, each with a 'front' div and 'back' div for flip effect
+                   //Create 'front' divs with images (must have 2 of each image)
+
+
+               add cards to cardContainer
+                   //Display divs in random order w/ 'back' side visable
+
+
+               add click listeners to them
+                   //Card divs onClick flip (toggle) to reveal 'front' div images -- card div CSS needed: transform-style: preserve-3d
+
+
+
+
+       click card
+           is it the first card
+
+
+           are we matching cards
+               //After 2 cards are flipped, check if the images match
+
+
+           does this cause success or fail
+               //If they match, remove those cards & add count to # of matches made
+               //If they do NOT match, flip back over to 'back' side div
+          
+           finish game
+               //Once all card divs are matched & removed, stop timer, display "You won" & timer value
+
+
+       restart game
+           //Restart button re-initiates game with cards in new random order
+           //Can add levels eventually, user chooses easy, med, hard & each display more/less total cards
+
+
+*/
+      async function getDogPics() {
+        const response = await fetch("https://dog.ceo/api/breeds/image/random");
+        const dogPics = await response.json();
+        return dogPics.message;
+      }
+
+      let totalCards;
+      let imagesArray = [];
+      let shuffledArray = [];
+
+      let cardContainer;
+      let levelBtnsCont;
+      let startBtns;
+      
+
+      const init = async () => {
+        
+        levelBtnsCont = document.getElementById('levelBtnContainer');
+        startBtns = document.querySelectorAll('.startButton');
+        startBtns.forEach(btn => {
+            btn.addEventListener('click', levelBtnClicked)
+        });
+        cardContainer = document.getElementById("cardContainer");
+        
+      };
+      const getImages = async () => {
+        //Make a loop that runs 'totalCards' amount of times
+        //On each interation:
+        //get image url & add it to an array
+
+        for (var i = 0; i < totalCards; i++) {
+          const imageURL = await getDogPics();
+          imagesArray.push(imageURL);
+          imagesArray.push(imageURL);
+        }
+      };
+      function shuffleImages(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      let firstCard = null;
+      let secondCard = null;
+
+      function flipCard(eventInfo) {
+        eventInfo.currentTarget.classList.toggle("flipCard");
+
+        if (firstCard == null) {
+          firstCard = eventInfo.currentTarget;
+          console.log("1st:", firstCard);
+        } else if (secondCard == null) {
+          secondCard = eventInfo.currentTarget;
+          console.log("2nd:", secondCard);
+
+          if (firstCard && secondCard) {
+            checkMatch(firstCard, secondCard);
+          }
+        }
+      }
+      let matchCounter = 0;
+
+      function checkMatch(card1, card2) {
+        function countMatch() {
+          const matchCountSpan = document.getElementById("matchCount");
+          matchCounter += 1;
+          matchCountSpan.innerHTML = matchCounter;
+        }
+        function reFlip() {
+          card1.classList.remove("flipCard");
+          card2.classList.remove("flipCard");
+        }
+        function removeFlip() {
+          card1.removeEventListener("click", flipCard);
+          card2.removeEventListener("click", flipCard);
+        }
+        function youWon() {
+          const winnerInfoCont = document.getElementById("youWonContainer");
+          let finalMin = document.getElementById("minute").innerHTML;
+          let finalSec = document.getElementById("second").innerHTML;
+          winnerInfoCont.innerHTML = `Great job! You found ${matchCounter} matches in ${finalMin} minutes and ${finalSec} seconds!`; 
+          levelBtnsCont.classList.remove("hideButton");
+          startBtns.forEach(btn => {
+            btn.addEventListener('click', restartGame)
+          });
+        }
+
+        if (
+          card1.firstChild.firstChild.src == card2.firstChild.firstChild.src
+        ) {
+          console.log("match");
+          removeFlip();
+          countMatch();
+          if (matchCounter == totalCards) {
+            pauseTimer();
+            setTimeout(youWon, 1300);
+          }
+        } else if (
+          card1.firstChild.firstChild.src != card2.firstChild.firstChild.src
+        ) {
+          console.log("loser");
+          setTimeout(reFlip, 1300);
+        }
+
+        firstCard = null;
+        secondCard = null;
+      }
+
+      let minute = 0;
+      let second = 0;
+      let millisecond = 0;
+
+      let timeCount;
+
+      function startTimer() {
+        pauseTimer();
+        timeCount = setInterval(() => {
+          timer();
+        }, 10);
+      }
+
+      function pauseTimer() {
+        clearInterval(timeCount);
+      }
+
+      function resetTimer() {
+        minute = 0;
+        second = 0;
+        millisecond = 0;
+        document.getElementById("minute").innerText = "00";
+        document.getElementById("second").innerText = "00";
+      }
+      function timer() {
+        if ((millisecond += 10) == 1000) {
+          millisecond = 0;
+          second++;
+        }
+        if (second == 60) {
+          second = 0;
+          minute++;
+        }
+
+        document.getElementById("minute").innerText = returnData(minute);
+        document.getElementById("second").innerText = returnData(second);
+      }
+
+      function returnData(input) {
+        return input > 10 ? input : `0${input}`;
+      }
+      function levelBtnClicked(btnInfo){
+        totalCards = parseInt(btnInfo.currentTarget.getAttribute('cardCount'));
+        startGame();
+      }
+      async function startGame() { 
+        
+        await getImages();
+        const timerContainer = document.getElementById("timerContainer");
+        const matchCountCont = document.getElementById("matchCountContainer");
+        timerContainer.innerHTML = `Time: <span id="minute">00</span>:<span id="second">00</span>`;
+        matchCountCont.innerHTML = `Matches Found: <span id="matchCount"></span>`;
+
+        shuffleImages(imagesArray);
+
+        for (var j = 0; j < totalCards * 2; j++) {
+          const createCard = `<div class= "card"><div class= "front"><img class= "dogImgs" src="${imagesArray[j]}" alt="Dog"></div><div class= "back"><img class= "cardBack" src="assets/cardBack.jpg" alt="Card"></div></div>`;
+          cardContainer.innerHTML += createCard;
+        }
+        const allCards = document.querySelectorAll(".card");
+
+        for (var card of allCards) {
+          card.addEventListener("click", flipCard);
+        }
+
+        startTimer();
+        
+        levelBtnsCont.setAttribute("class", "hideButton");
+      }
+      async function restartGame() {
+        imagesArray = [];
+        cardContainer.innerHTML = ``;
+        const youWonCont = document.getElementById("youWonContainer");
+        youWonCont.innerHTML = ``;
+        resetTimer();
+        matchCounter = 0;
+      }
+
+      window.onload = init;
+    </script>
+  </head>
+  <body>
+    <div id="timerContainer"></div>
+    <div id="matchCountContainer"></div>
+    <div id="cardContainer"></div>
+    <br>
+    <br>
+    <div id="youWonContainer"></div>
+    <br>
+    <div id="levelBtnContainer">
+        Select a level: <br>
+        <button id="easy" cardCount= "3" class="startButton">Easy</button><br>
+        <button id="medium" cardCount= "4" class="startButton">Medium</button><br>
+        <button id="hard" cardCount= "5" class="startButton">Hard</button><br>
+    </div>
+  </body>
+</html>

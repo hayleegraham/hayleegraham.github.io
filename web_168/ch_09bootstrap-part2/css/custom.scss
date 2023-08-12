@@ -1,0 +1,29 @@
+caption {
+    caption-side: top;
+}
+.table-dark {
+    --bs-table-bg: #48d6d2;
+}
+.profile {
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 2px 2px 5px #333;
+    width: 20%;
+    height: auto;
+}
+header {
+    background-color: #48d6d2;
+}
+.text-custom {
+    color: #48d6d2;
+}
+.btn-custom {
+    background-color: #48d6d2;
+    color: white;
+}
+@media (max-width: 768px) {
+    section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}

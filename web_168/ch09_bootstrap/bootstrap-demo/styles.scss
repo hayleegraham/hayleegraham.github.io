@@ -1,0 +1,21 @@
+.row-center {
+    justify-content: center;
+}
+.profile {
+    border-radius: 50%;
+}
+.image-size {
+    max-height: 400px; 
+}
+.bg-custom {
+    background-color: #005f61;
+}
+.btn.btn-custom, 
+a.nav-link.active, 
+.portfolio .portfolio-item .portfolio-item-caption {
+    background-color: #005f61 !important;
+    color: white !important;
+}
+#mainNav .navbar-brand {
+    white-space: normal;
+}

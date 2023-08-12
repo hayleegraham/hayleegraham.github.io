@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Methods</title>
+    <style>
+        #shark {
+            width: 100px;
+            height: 100px;
+            background: #0C0;
+            position: absolute;
+            top: 100px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="shark"></div>
+
+    <script>
+
+        //Set interval method (shark div)
+        var pos = 10;
+        function doSomething() {
+            pos += 10;
+            document.getElementById("shark").style.left = pos + 'px';
+            console.log('pos:', pos);
+
+            if (pos > 100){
+                // Clears (stops) interval once pos is over 100
+                clearInterval(posInt);
+            }
+        }
+        var posInt = setInterval("doSomething()", 1000);
+
+
+        // setTimeout method (button)
+        function timerClickHandler() {
+            var timeOfDay = new Date();
+            var seconds = timeOfDay.getSeconds();
+            var minutes = timeOfDay.getMinutes();
+            console.log(`${minutes}:${seconds}`);
+
+            if  (seconds > 30 && seconds < 40){
+                //Clears (stops) timer if seconds are between 30 and 40
+                clearTimeout(myTimer)
+            }else {
+            //Start timer -- starting point based on current time of user browser
+            var myTimer = setTimeout(timerClickHandler, 1000);
+            }
+        }
+
+
+    </script>
+    <span id="time"></span>
+    <input type="button" name="clickMe" id="alertTimerButton" value="Click Me and Wait!" onclick="timerClickHandler();">
+</body>
+</html>

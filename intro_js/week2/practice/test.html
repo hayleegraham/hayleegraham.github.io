@@ -1,0 +1,18 @@
+<span id = "showtext"></span>
+<input type="number" id ="sales_amount" >
+<button onclick="showAmount()">Click</button>
+<script>
+function showAmount(){
+const salesAmt =    parseFloat(document.querySelector(
+        "#sales_amount").value).toFixed(2);
+
+if (document.querySelector("#sales_amount").value === ''){
+	alert('please enter a value');
+	document.querySelector("#sales_amount").focus();
+}
+}
+/*
+const greeting = '<h1>hello</h1>';
+document.querySelector('#showtext').innerHTML = greeting;
+*/
+</script>

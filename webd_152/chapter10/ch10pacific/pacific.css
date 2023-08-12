@@ -1,0 +1,259 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #eaeaea;
+  color: #555555;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#wrapper {
+  background-color: #90c7e3;
+  background-image: linear-gradient(to bottom, #ffffff, #90c7e3);
+}
+header {
+  background-color: #000032;
+  color: #ffffff;
+  background-image: url(images/sunset.jpg);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding: 0.5em;
+}
+header a {
+  text-decoration: none;
+}
+header a:link,
+header a:visited {
+  color: #ffffff;
+}
+header a:hover {
+  color: #90c7e3;
+}
+nav {
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+}
+nav ul {
+  font-size: 1.2em;
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+nav li {
+  border-bottom: 1px solid #002171;
+}
+nav a {
+  text-decoration: none;
+}
+nav a:link {
+  color: #5c7fa3;
+}
+nav a:visited {
+  color: #344873;
+}
+nav a:hover {
+  color: #a52a2a;
+}
+main {
+  background-color: #ffffff;
+  padding: 1px 20px 20px 30px;
+  display: block;
+  overflow: auto;
+}
+h1,
+h2,
+h3,
+footer {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+h1 {
+  letter-spacing: 0.25em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+}
+h2 {
+  color: #1976d2;
+  text-shadow: 1px 1px #cccccc;
+}
+h3 {
+  color: #000033;
+}
+dt {
+  color: #002171;
+}
+footer {
+  background-color: #ffffff;
+  font-size: 75%;
+  font-style: italic;
+  text-align: center;
+  padding: 2em;
+}
+.resort {
+  color: #1976d2;
+  font-weight: bold;
+}
+#contact {
+  font-size: 90%;
+}
+#homehero {
+  height: 300px;
+  background-image: url(images/coast2.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#yurthero {
+  height: 300px;
+  background-image: url(images/yurt.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+#trailhero {
+  height: 300px;
+  background-image: url(images/trail.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+table {
+  border-bottom: 2px solid #1976d2;
+  border-collapse: separate;
+}
+th {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+td, th {
+  padding: 0.5em;
+  /* border: 2px solid #3399CC; */
+}
+td {
+  text-align: center;
+}
+.text {
+  text-align: left;
+}
+tr:nth-last-of-type(odd) {
+  background-color: #F5FAFC;
+}
+form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+input, textarea {
+  margin-bottom: 0.5em;
+}
+
+@media (max-width: 600px) {
+  header {
+    background-image: none;
+  }
+  #homehero, #yurthero, #trailhero {
+    background-size: cover;
+  }
+  #special table {
+    display: block;
+    border-bottom: none;
+  }
+  #special td, #special th {
+    display: block;
+  }
+  #special thead {
+    display: none;
+  }
+  td.package::before {
+    content: "Package:";
+  }
+  td.description::before {
+    content: "Description:";
+  }
+  td.nights::before {
+    content: "Nights:";
+  }
+  td.cost::before {
+    content: "Cost:";
+  }
+  td.package,
+  td.description,
+  td.nights,
+  td.cost {
+    padding-left: 35%;
+    position: relative;
+    text-align: left;
+    font-size: 4vw;
+  }
+  td::before {
+    position: absolute;
+    top: 10px;
+    left: 0.5em;
+    font-weight: bold;
+    color: #1976d2;
+  }
+  td:last-of-type {
+    border-bottom: 2px solid #1b69b2;
+  }
+}
+@media (min-width: 600px) {
+  nav ul {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around; 
+  }
+  nav li {
+    border-bottom: none;
+  }
+  section {
+    margin-left: 2em;
+    margin-right: 2em;
+    flex: 1;
+  }
+  .flow {
+    display: flex;
+    flex-direction: row;
+  }
+  form {
+    display: grid;
+    grid-template-columns: 6em 1fr;
+    gap: 1em;
+    width: 60%;
+    max-width: 30em;
+  }
+  input[type="submit"] {
+  grid-column: 2 / 3;
+  width: 9em;
+  }
+}
+@media (min-width: 1024px) {
+  #wrapper {
+    border: 1px solid #002171;
+    box-shadow: 3px 3px 3px #002171;
+    margin: auto;
+    width: 80%;
+  }
+  nav {
+    text-align: left;
+    padding-left: 1em;
+  }
+  @supports (display: grid) {
+    nav ul {
+      flex-direction: column;
+      padding-top: 1em;
+    }
+    .hero {grid-area: hero;}
+    header {grid-area: header;}
+    nav {grid-area: nav;}
+    main {grid-area: main;}
+    footer {grid-area: footer;}
+    #wrapper {
+      display: grid;
+      grid-template: 
+      "header header"
+      "nav hero"
+      "nav main"
+      "nav footer"
+      / 180px 1fr;
+    }
+  }
+}

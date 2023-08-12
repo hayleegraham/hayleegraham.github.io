@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clcik Events</title>
+    <style>
+        .btn{
+            width:50px;
+            height:50px;
+            background-color:greenyellow;
+            border: black solid thin;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="btn">1</div>
+    <div class="btn">2</div>
+    <div class="btn">3</div>
+    <div class="btn">4</div>
+    <div class="btn">+</div>
+    <div id="answer"></div>
+
+
+
+    <script>
+    const btnClicked = (eventInfo)=>{
+        document.getElementById("answer").innerHTML += eventInfo.target.innerHTML
+    }
+    var btns = document.querySelectorAll('.btn')
+    for (var btn of btns){
+
+        btn.onclick = btnClicked
+    }
+    </script>
+    
+</body>
+</html>

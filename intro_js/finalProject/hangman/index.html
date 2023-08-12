@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="hangman.css">
+    <script src="js/JQuery.js"></script>
+    <script src="js/hangman.js"></script>
+</head>
+<body>
+    <div id="introScreen">
+        <h1>Save the Dinosaurs from the Incoming Asteroid!</h1>
+        <p>Test you dinosaur knowledge by guessing the correct species based on the given hint. Dinosaur information provided by Dino API.</p>
+        <button id="playBtn">Play</button>
+    </div>
+    <div id="gameScreen">
+        <div id="dinoImgCont"><img class="hide" id="asteroid" src="assets/asteroid.svg" alt=""><img id="dinoImg" src="assets/dinos.jpg" alt="Dinosaurs"></div>
+        <div id="letterBank">Used Letter Bank <hr> <div id="usedLetters"></div></div>
+        <div id="inputBtnCont">
+            <input id="letterInpt" type="text"> &nbsp; <button id="submitBtn">Submit Letter</button>
+        </div>
+        <div id="blankSpaces"></div>
+        <div id="hintCont">Hint: <span id="hint"></span></div>
+    </div>
+</body>
+</html>

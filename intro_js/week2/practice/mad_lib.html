@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+  
+  <!-- <p id="madLib">Douglas is a very <span id="adj1"></span> man. He enjoys <span id="verb1"></span> after a long day of <span id="verb2"></span>. He likes to think he is very <span id="adj2"></span>, but he is actually quite <span id="adj3"></span>. His <span id="color1"></span> hair and <span id="color2"></span> <span id="adj4"></span> skin make him quite the looker.</p> -->
+    <script>
+        function doMadLib(){
+            var startMadLib = confirm('Would you like to do a Mad Lib?')
+            if (startMadLib==true){
+                var adj1 = prompt('Enter an adjective')
+                var verb1 = prompt('Enter a verb')
+                var verb2 = prompt('Enter a verb')
+                var adj2 = prompt('Enter a adjective')
+                var adj3 = prompt('Enter a adjective')
+                var color1 = prompt('Enter a color')
+                var color2 = prompt('Enter a color')
+                var adj4 = prompt('Enter a adjective')
+                document.write(`Douglas is a very ${doUnderline(adj1)} man. He enjoys ${doUnderline(verb1)} after a long day of ${doUnderline(verb2)}. He likes to think he is very ${doUnderline(adj2)}, but he is actually quite ${doUnderline(adj3)}. His ${doUnderline(color1)} hair and ${doUnderline(color2)} ${doUnderline(adj4)} skin make him quite the looker.`)
+            }else{
+                alert('Im sorry your childhood was so sad...')
+                window.open("https://www.madlibs.com/history/","_self")
+            }
+        }
+        function doUnderline (chosenWords) {
+            var styled = `<span>${chosenWords}</span>`
+            return styled
+        }
+        doMadLib();
+    </script>
+</body>
+</html>

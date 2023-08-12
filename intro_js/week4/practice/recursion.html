@@ -1,0 +1,57 @@
+<!-- Javascript: using childNodes -->
+<HTML>
+<HEAD>
+<TITLE>recursion and childNodes</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Sample Document</H1>
+
+<P>Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+</P>
+<HR>
+
+<P style="font-family:sans-serif">Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+Here is some stuff. Here is some stuff. Here is some stuff.
+</P>
+
+
+<UL>
+  <LI>Here is a list item</LI>
+  <LI>another list item <span>including a span</span></li>
+</ul>
+<hr>
+<SCRIPT>
+// Print a list of all the nodes in the document
+// Uses recursion, which is tricky since each recursive call
+// generates more document (and more childNodes!)
+
+function showall(obj) {
+  var str="";
+   if (obj.childNodes.length != 0) {
+      str = "<UL>";
+      for (var i=0; i< obj.childNodes.length; i++) {
+         if (obj.childNodes[i].tagName != undefined) { 
+             str = str + "<LI>"+obj.childNodes[i].tagName+"</LI>";
+            str = str + showall(obj.childNodes[i]);
+         }
+      }
+      str = str + "</UL>";
+   }
+   return(str);
+}
+// start things off by calling showall on the entire document.
+document.writeln(showall(document));
+</SCRIPT>
+
+</BODY>
+</HTML>

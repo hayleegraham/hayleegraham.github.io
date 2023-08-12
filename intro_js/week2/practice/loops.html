@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops Practice</title>
+    <style>
+        .container {
+            width: 50%;
+            height: 500px;
+            overflow: hidden;
+            justify-content: center;
+            margin: 0 auto;
+
+        }
+
+        .square {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: black solid thin;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+       
+
+    </div>
+<script>
+    //While & For loops examples
+
+    // var i = 1;
+    // while (i < 100) {
+    //     console.log('while', i);
+    //     i+=5;
+    // }
+    // for (i=100; i > 0; i -= 5){
+    //     console.log('for', i)
+    // }
+
+    var createBox = ()=> {
+        var randColor = parseInt(Math.random() * 1000000);
+        console.log("create box")
+        var square = `<div class="square" style="background-color:#${randColor}"></div>`
+        document.querySelector(".container").innerHTML += square
+    }
+    // for (i = 1; i < 91; i++) {
+    //         createBox()
+    //         console.log("I IS::", i)
+    //         console.log("I % 10 = ", i % 10)
+
+    //         // % = divide and get "remainder of"
+    //         //This condition says "if i % 10 = 0, add a break point to the .container div" starting new row of squares
+    //         // I.E. "Add break point after every 10th square"
+    //         // == checks that values are equal, === checks that values and TYPE are equal
+    
+    //         if (i % 10 == 0) {
+    //             console.log("DOING BREAK")
+    //             document.querySelector(".container").innerHTML += '<br/>'
+    //         }
+    //         console.log("END LOOP------------------")
+    //     }
+
+    const makeGrid = (width,height)=>{
+            for(var i = 0; i < height; i++){
+                for(var c = 0; c < width; c++){
+                    createBox()
+                }
+                document.querySelector(".container").innerHTML += '<br/>'
+            }
+        }
+        makeGrid(10,10)
+</script>
+</body>
+</html>

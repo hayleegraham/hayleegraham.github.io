@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Validate me</title>
+<style>
+	#errorMsgDiv{
+		color: red
+	}
+	.errName{
+		color: blue;
+	}
+	.success{
+		color: green;
+	}
+</style>
+<script>
+	//loop thru input elements to determine what 'type' they are
+	//check if each input element has a value 
+	// -OR- if radios/checkboxes have property of checked == true
+	let formEl;
+	let submitBtn;
+	let errorMsgDiv;
+	let inputErrors = [];
+
+	function init(){
+		formEl = document.forms[0]
+		errorMsgDiv = document.getElementById('errorMsgDiv')
+		submitBtn = formEl.elements.submitForm
+		submitBtn.addEventListener("click", validateMe)
+	}
+	function addError(elemName){
+		inputErrors.push(elemName)
+		const errorMsg = `* You must enter a value for <span class = "errName">${elemName}</span><br>`
+		errorMsgDiv.innerHTML += errorMsg
+	}
+	function validateMe(event){
+		inputErrors = []
+		errorMsgDiv.innerHTML = ''
+		event.preventDefault()
+		const alreadyChecked = []
+
+		for (var i = 0; i < formEl.length; i++){
+			const inputEl = formEl.elements[i]
+
+			if(inputEl.type == 'text'){
+				if(inputEl.value == ''){
+					addError(inputEl.name)
+				}
+			}
+
+			if(inputEl.type == 'radio'){
+				const elName = inputEl.name
+				if(!alreadyChecked.includes(elName)){
+					let radioGrp = false;
+					const elem = document.getElementsByName(elName)
+					const numOfEls = elem.length
+				
+					for(var j = 0; j < numOfEls; j++){
+						if(elem[j].checked == true){
+							radioGrp = true
+						}
+					}
+					if(radioGrp == false){
+						addError(elName)
+					}
+					alreadyChecked.push(elName)
+				}
+			}
+
+			if(inputEl.type == 'checkbox'){
+				const elName = inputEl.name
+				if(!alreadyChecked.includes(elName)){
+					let checkboxGrp = false;
+					const elem = document.getElementsByName(elName)
+					const numOfEls = elem.length
+				
+					for(var j = 0; j < numOfEls; j++){
+						if(elem[j].checked == true){
+					
+							checkboxGrp = true
+						}
+					}
+					if(checkboxGrp == false){
+						addError(elName)
+					}
+					alreadyChecked.push(elName)
+				}
+			}
+
+			if(inputEl.type == 'select-one'){
+				if(inputEl.value == ''){
+					addError(inputEl.name)
+				}
+			}
+
+			if(inputEl.type == 'textarea'){
+				
+				if(inputEl.value.trim() == ''){
+					addError(inputEl.name)
+				}
+			}
+		}
+		if(inputErrors.length > 0){
+			const firstErrorEl = inputErrors[0]
+			document.getElementsByName(firstErrorEl)[0].focus()
+		}else{
+			errorMsgDiv.innerHTML = `<span class = "success">Form Successfully Submitted!</span>`
+			document.querySelector('form').reset()
+		}
+	}
+	window.onload = init;
+</script>
+</head>
+<body>
+At least one piece of data has to come in from every input type.
+<br>
+<br>
+<div id="errorMsgDiv"></div>
+<form action="" method="get" onsubmit=""><br>
+Name: <input type="text" id="name" name="Full Name" placeholder="Enter Full Name"><br>
+Gender:<br>
+Male<input type="radio" name="Gender" value="male">Female<input type="radio" name="Gender" value="female"><br>
+Hobbies:<br>
+Baseball <input type="checkbox" name="Hobbies" value="baseball">  
+Football <input type="checkbox" name="Hobbies" value="football">  
+Hockey <input type="checkbox" name="Hobbies" value="hockey"><br>
+Favorite Show: <select name="Favorite Show">
+<option value="">Choose Below</option>
+<option value="ATHF">Aqua Teen Hunger Force</option>
+<option value="Family Guy">Family Guy</option>
+<option value="Simpsons">Simpsons</option>
+</select><br>
+Comments:<br>
+<textarea cols="50" rows="6" name="Comments" placeholder="Enter Comments"></textarea><br>
+<input type="submit" name="submitForm" value="Submit Form">
+</form>
+
+</body></html>

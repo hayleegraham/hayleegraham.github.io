@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix the Problems</title>
+</head>
+<body>
+    <div id="problem">2+2</div>
+    =
+    <div id="answer"></div>
+    <br/>
+    <br/>
+    <input type="text" id="problem2" value="5+5" disabled/>
+    =
+    <input type="text" id="answer2"></input>
+
+    <br/>
+    <button onClick="doProblem1()">2+2</button>
+    <button onClick="doProblem2()">5+5</button>
+
+    <script>
+
+        const doProblem1 = ()=>{
+            console.log("DOING PROBLEM 1")
+            // DISPLAY THE ANSWER IN <div id="answer">
+            // .innerHTML is for changing the contents of an HTML element (like a div)
+            document.getElementById("answer").innerHTML = eval(document.getElementById("problem").innerHTML);
+        }
+        const doProblem2 = ()=>{
+            console.log("DOING PROBLEM 2")
+            // DISPLAY THE ANSWER IN <input id="answer2"
+            // .value is for INPUT values
+            document.getElementById("answer2").value = eval(document.getElementById("problem2").value);
+        }
+    </script>
+    
+</body>
+</html>

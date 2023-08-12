@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Elements by Name</title>
+    <style>
+       
+    </style>
+    <script>
+        function validate(){
+            clear();
+
+            var titles = document.getElementsByName('title');
+            var titlesCheck = false;
+
+            
+            for (var i = 0; i < titles.length; i++) {
+
+                
+
+                if ((titles[i]).checked) {
+                    var userTitle = (titles[i])
+                    titlesCheck = true;
+                }
+            }
+            if (!titlesCheck) {
+                document.getElementById('error').firstChild.nodeValue = "*Please select a title";
+                return false  //Stops the function
+            }
+            alert(`You chose ${userTitle.value}`)
+            return true  //Function is finished & form is submitted
+            
+        }
+
+        function clear(){
+            document.getElementById('error').firstChild.nodeValue = "";
+        }
+
+        function init() {
+            document.getElementById('userForm').onsubmit = validate;
+            document.getElementById('btnClear').onclick = clear;
+
+        }
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Subscribe to our Newsletter</h1>
+    <h3 style="color: red">*All fields are required!</h3>
+
+    <form id= "userForm" method="post">
+        Please choose your title: &nbsp; <span class="error" id="error" style="color: red">&nbsp</span>
+        <br>
+
+        <label for="mr">Mr.</label>
+        <input type="radio" name= "title" id="mr" value="Mr.">
+        <br>
+
+        <label for="mrs">Mrs.</label>
+        <input type="radio" name= "title" id="mrs" value="Mrs.">
+        <br>
+
+        <label for="ms">Ms.</label>
+        <input type="radio" name= "title" id="ms" value="Ms.">
+        <br>
+        <br>
+
+        <input type="submit" value="Submit the Form" id="btnSubmit">
+        <br>
+        <br>
+
+        <input type="reset" value="Clear Form" id="btnClear">
+
+
+    </form>
+    
+</body>
+</html>

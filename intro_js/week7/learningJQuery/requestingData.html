@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Objects & Toggle Practice</title>
+    <style>
+      .personCont {
+        display: none;
+      }
+    </style>
+    <script src="js/JQuery.js"></script>
+    <script>
+      let people = []
+
+      const clickFunction = (event) => {
+        const buttonEl = $(event.currentTarget);
+        const personID = buttonEl.attr("person");
+        const person = people[personID];
+        const personContent = buttonEl.next(".personCont");
+        const fnameContent = personContent.children(".fname");
+        fnameContent.html(person.fname);
+        const lnameContent = personContent.children(".lname");
+        lnameContent.html(person.lastname);
+        personContent.css("background-color", person.favoritecolor);
+        personContent.toggle();
+      };
+      $(document).ready(async function () {
+        const apiData = await $.get('http://saishostaging.com/assets/people.json')
+        people = apiData.peopledata
+
+        for (var i = 0; i < people.length; i++) {
+          const createButtonEl = `<button class="person" person="${i}">Person ${i+1}</button>`;
+          const createDivEl = 
+          `<div class="personCont">
+            <div class="fname"></div>
+            <div class="lname"></div>
+        </div><br>`;
+          $("body").append(createButtonEl, createDivEl);
+        }
+
+        $(".person").click(clickFunction);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

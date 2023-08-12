@@ -1,0 +1,51 @@
+body{
+    background-image: url(../assets/heartblack.jpeg);
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: larger;
+    text-shadow: 2px 2px 5px black;
+}
+
+header{
+    color: rgb(255, 123, 106);
+    margin-left: 70px;
+    font-size: x-large;
+    text-shadow: 2px 2px 5px black; 
+    text-decoration: underline;  
+    text-decoration-color: rgb(255, 123, 106);
+}
+
+nav{
+    margin-left: 80px;
+    color: rgb(239, 42, 42);
+}
+
+a:link{
+     color: rgb(250, 0, 0);
+     text-decoration: none; 
+     text-shadow: 2px 2px 5px black;   
+}
+
+a:visited{
+     color: rgba(255, 198, 198, 0.926);
+     text-decoration: none; 
+     text-shadow: 2px 2px 5px black;
+}
+
+p{
+    width: 600px;
+    padding: 15px;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: x-large;
+}
+
+ol{
+    margin-top: 30px;
+    margin-left: 90px;
+    text-shadow: 2px 2px 5px black;
+    font-size: larger;
+}
