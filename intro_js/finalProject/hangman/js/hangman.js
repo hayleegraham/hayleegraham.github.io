@@ -65,25 +65,25 @@ $(document).ready(async function () {
         asteroidSVG.removeClass("hide")
         
         if(wrongGuesses == 2){
-            asteroidSVG.animate({top: "2%", left: "4.57%", scale: 1.2})
+            asteroidSVG.animate({left: "3%", scale: 1.5})
         }
         if(wrongGuesses == 3){
-            asteroidSVG.animate({top: "7%", left: "6.14%", scale: 1.4})
+            asteroidSVG.animate({left: "3%", scale: 2})
         }
         if(wrongGuesses == 4){
-            asteroidSVG.animate({top: "12%", left: "7.71%", scale: 1.6})
+            asteroidSVG.animate({left: "2%", scale: 3})
         }
         if(wrongGuesses == 5){
-            asteroidSVG.animate({top: "17%", left: "9.28%", scale: 1.8})
+            asteroidSVG.animate({left: "0", scale: 4})
         }
         if(wrongGuesses == 6){
-            asteroidSVG.animate({top: "22%", left: "10.85%", scale: 2})
+            asteroidSVG.animate({left: "-2%", scale: 5})
         }
         if(wrongGuesses == 7){
-            asteroidSVG.animate({top: "27%", left: "12.42%", scale: 2.2})
+            asteroidSVG.animate({left: "-5%", scale: 6})
         }
         if(wrongGuesses == 8){
-            asteroidSVG.animate({top: "32%", left: "14%", scale: 2.4})
+            asteroidSVG.animate({left: "-8%", scale: 7})
         }
 
         $("#usedLetters").append(`<span>${userLetter}</span>`)
