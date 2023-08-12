@@ -5,6 +5,7 @@ body {
     margin: 0 auto;
 }
 #introScreen {
+    display: flow-root;
     background-image: url("assets/jungle.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,6 +16,7 @@ body {
 }
 #introTextCont{
     margin: 0 auto;
+    margin-top: 20px;
     text-align: center;
     padding: 10px;
     padding-bottom: 20px;
@@ -33,15 +35,15 @@ body {
 }
 #dinoImg{
     position: absolute;
-    height: 435px;
+    height: 440px;
     width: 922px;
-    top: 7%;
-    left: 4%;
+    padding-top: 45px;
+    left: 100px;
 }
 #letterBank{
     position: absolute;
-    right: 4%;
-    top: 7%;
+    right: 100px;
+    top: 45px;
     height: 425px;
     width: 320px;
     padding: 5px;
@@ -51,8 +53,8 @@ body {
 }
 #inputBtnCont{
     position: absolute;
-    top: 70%;
-    left: 8%;
+    top: 500px;
+    left: 105px;
     height: fit-content;
     width: fit-content;
     padding-top: 20px;
@@ -71,8 +73,8 @@ body {
 }
 #blankSpaces{
     position: absolute;
-    top: 76%;
-    left: 7%;
+    top: 535px;
+    left: 105px;
     height: fit-content;
     width: fit-content;
     padding-top: 10px;
