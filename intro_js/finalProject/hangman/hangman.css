@@ -5,22 +5,36 @@ body {
     margin: 0 auto;
 }
 #introScreen {
-    background-color: aquamarine;
-    height: 80%;
-    width: 70%;
-    text-align: center;
+    background-image: url("assets/jungle.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    width: 1200px;
     margin: 0 auto;
+    margin-top: 0;
+}
+#introTextCont{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 20px;
+    background-color: beige;
+    border-radius: 50px;
+    width: 850px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4),
+      4px 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
 #gameScreen {
     display: none;
     margin: 0 auto;
-    height: 80%;
-    width: 70%;
+    max-height: 80%;
+    max-width: 80%;
 }
 #dinoImg{
     position: absolute;
-    height: 60%;
-    width: 60%;
+    height: 435px;
+    width: 922px;
     top: 7%;
     left: 4%;
 }
@@ -28,8 +42,8 @@ body {
     position: absolute;
     right: 4%;
     top: 7%;
-    height: 60%;
-    width: 20%;
+    height: 425px;
+    width: 320px;
     padding: 5px;
     text-align: center;
     border: 2px solid black;
@@ -41,6 +55,7 @@ body {
     left: 8%;
     height: fit-content;
     width: fit-content;
+    padding-top: 20px;
 }
 #hintCont{
     position: absolute;
@@ -60,6 +75,7 @@ body {
     left: 7%;
     height: fit-content;
     width: fit-content;
+    padding-top: 10px;
 }
 .space {
     display: inline-block;
