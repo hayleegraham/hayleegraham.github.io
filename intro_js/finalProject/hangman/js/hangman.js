@@ -54,6 +54,7 @@ $(document).ready(async function () {
   console.log(word)
 
   const checkLetter = () => {
+    console.log("checking letter")
     const userLetter = $("#letterInpt").val().toUpperCase();
     const index = word.indexOf(userLetter);
 
@@ -83,8 +84,9 @@ $(document).ready(async function () {
             asteroidSVG.animate({left: "-5%", scale: 6})
         }
         if(wrongGuesses == 8){
-            asteroidSVG.animate({left: "-8%", scale: 7})
+          console.log("Explosion")
         }
+        
 
         $("#usedLetters").append(`<span>${userLetter}</span>`)
         console.log(wrongGuesses)
