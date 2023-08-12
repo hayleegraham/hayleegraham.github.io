@@ -58,6 +58,10 @@ body {
     height: fit-content;
     width: fit-content;
     padding-top: 20px;
+    z-index: 2;
+}
+#introTextCont button{
+    border-radius: 6px;
 }
 #hintCont{
     position: absolute;
@@ -102,7 +106,5 @@ body {
     transform: rotate(-130deg);
     z-index: 1;
     scale: 1;
-}
-.hide{
-    display: none;
+    opacity: 0;
 }

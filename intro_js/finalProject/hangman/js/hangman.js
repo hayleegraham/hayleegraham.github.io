@@ -63,27 +63,28 @@ $(document).ready(async function () {
 
     if (index == -1) {
         wrongGuesses += 1
-        asteroidSVG.removeClass("hide")
+        asteroidSVG.animate({opacity: "1"})
         
         if(wrongGuesses == 2){
-            asteroidSVG.animate({left: "3%", scale: 1.5})
+            asteroidSVG.animate({scale: 1.5})
         }
         if(wrongGuesses == 3){
-            asteroidSVG.animate({left: "3%", scale: 2})
+            asteroidSVG.animate({scale: 2})
         }
         if(wrongGuesses == 4){
-            asteroidSVG.animate({left: "2%", scale: 3})
+            asteroidSVG.animate({scale: 3})
         }
         if(wrongGuesses == 5){
-            asteroidSVG.animate({left: "0", scale: 4})
+            asteroidSVG.animate({scale: 4})
         }
         if(wrongGuesses == 6){
-            asteroidSVG.animate({left: "-2%", scale: 5})
+            asteroidSVG.animate({scale: 5})
         }
         if(wrongGuesses == 7){
-            asteroidSVG.animate({left: "-5%", scale: 6})
+            asteroidSVG.animate({scale: 6})
         }
         if(wrongGuesses == 8){
+          asteroidSVG.animate({scale: 7})
           console.log("Explosion")
         }
         
