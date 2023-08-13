@@ -44,12 +44,19 @@ $(document).ready(async function () {
       "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random"
     );
   }
+  const fillInWord = () => {
+    for (var i = 0; i < word.length; i++) {
+      const letter = word.charAt(i);
+      const indexPos = i;
+      $(`.space[index="${indexPos}"]`).text(letter);
+    }
+  };
   const startGame = async () => {
     await getApiData();
     hint = apiData.Description;
     $("#hint").text(hint);
     word = apiData.Name.toUpperCase();
-    
+
     for (var i = 0; i < word.length; i++) {
       spacesCont.append(`<div class="space" index="${i}"></div>
         &nbsp; &nbsp;`);
@@ -59,7 +66,7 @@ $(document).ready(async function () {
     $("#gameScreen").toggle();
     $("#letterInpt").focus();
   };
-  
+
   const checkLetter = () => {
     console.log(word);
     $("#error").text("");
@@ -98,11 +105,24 @@ $(document).ready(async function () {
         }
         if (wrongGuesses == 8) {
           asteroidSVG.animate({ scale: 7 });
-          TweenLite.to(asteroidSVG,.2,{opacity:0, delay:1})
-          TweenLite.to($("#explosion"),1.8,{opacity:1, scale:1.5, delay:.8, onComplete:()=>{
-            TweenLite.to($("#dinoFire"),2.2,{opacity:1})
-            TweenLite.to($("#explosion"),.3,{opacity:0,scale:.8})
-          }})
+          TweenLite.to(asteroidSVG, 0.2, { opacity: 0, delay: 1 });
+          TweenLite.to($("#explosion"), 1.8, {
+            opacity: 1,
+            scale: 1.5,
+            delay: 0.8,
+            onComplete: () => {
+              TweenLite.to($("#dinoFire"), 1.8, { opacity: 1 });
+              TweenLite.to($("#explosion"), 0.3, { opacity: 0, scale: 0.8 });
+            },
+          });
+          $("#inputBtnCont").addClass("hide");
+          setTimeout(function () {
+            $("#message").css("color", "red");
+            $("#message").text(
+              "Oh no, the asteroid has killed all the dinosaurs! Reset game to try again."
+            );
+            fillInWord();
+          }, 2500);
         }
 
         $("#usedLetters").append(`<span>${userLetter}</span>`);
@@ -127,16 +147,27 @@ $(document).ready(async function () {
             totalBlanks += 1;
           }
         }
-        console.log(totalBlanks)
+        console.log(totalBlanks);
         if (totalBlanks == 0) {
-          TweenLite.to(asteroidSVG,.7,{rotation: -165, delay: 1, onComplete:()=>{
-            TweenLite.to(asteroidSVG,2,{top: -100, left: 300, opacity:0, scale:.5})}
-          })
-          $("#inputBtnCont").addClass("hide")
-          setTimeout(function(){
-            $("#message").text("Congrats, you saved the dinosaurs from the asteroid! Reset game to play again.")
-          },2500)
-          
+          TweenLite.to(asteroidSVG, 0.7, {
+            rotation: -165,
+            delay: 1,
+            onComplete: () => {
+              TweenLite.to(asteroidSVG, 2, {
+                top: -100,
+                left: 300,
+                opacity: 0,
+                scale: 0.5,
+              });
+            },
+          });
+          $("#inputBtnCont").addClass("hide");
+          setTimeout(function () {
+            $("#message").css("color", "green");
+            $("#message").text(
+              "Congrats, you saved the dinosaurs from the asteroid! Reset game to play again."
+            );
+          }, 2500);
         }
       }
       $("#letterInpt").val("");
@@ -145,21 +176,21 @@ $(document).ready(async function () {
   };
 
   const resetGame = async () => {
-    $("#message").text("")
-    $("#inputBtnCont").removeClass("hide")
-    asteroidSVG.attr("style", "")
-    $("#dinoFire").css("opacity", "0")
-    usedLetterArr = []
-    spacesCont.empty()
-    $("#usedLetters").empty()
-    $("#hint").text("")
-    wrongGuesses = 0
-    asteroidSVG.css({"opacity": "0", "scale": "1"})
+    $("#message").text("");
+    $("#inputBtnCont").removeClass("hide");
+    asteroidSVG.attr("style", "");
+    $("#dinoFire").css("opacity", "0");
+    usedLetterArr = [];
+    spacesCont.empty();
+    $("#usedLetters").empty();
+    $("#hint").text("");
+    wrongGuesses = 0;
+    asteroidSVG.css({ opacity: "0", scale: "1" });
     await getApiData();
     hint = apiData.Description;
     $("#hint").text(hint);
     word = apiData.Name.toUpperCase();
-    
+
     for (var i = 0; i < word.length; i++) {
       spacesCont.append(`<div class="space" index="${i}"></div>
         &nbsp; &nbsp;`);
