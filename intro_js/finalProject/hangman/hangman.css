@@ -23,6 +23,7 @@ body {
     background-color: beige;
     border-radius: 50px;
     width: 850px;
+    opacity: .8;
     border: 1px solid black;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4),
       4px 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -65,6 +66,7 @@ body {
 }
 #introTextCont button{
     border-radius: 6px;
+    opacity: 1;
 }
 #hintCont{
     position: absolute;
