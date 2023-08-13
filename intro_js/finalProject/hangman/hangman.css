@@ -23,6 +23,7 @@ body {
     background-color: beige;
     border-radius: 50px;
     width: 850px;
+    opacity: .8;
     border: 1px solid black;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4),
       4px 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -30,8 +31,7 @@ body {
 #gameScreen {
     display: none;
     margin: 0 auto;
-    max-height: 80%;
-    max-width: 85%;
+    width: 1300px;
 }
 #imgBankCont{
     display: flex;
@@ -56,35 +56,31 @@ body {
 #inputBtnCont{
     display: flex;
     position: absolute;
-    top: 500px;
-    left: 110px;
     height: fit-content;
     width: fit-content;
-    padding-top: 20px;
+    padding-top: 30px;
     z-index: 5;
 }
 #introTextCont button{
     border-radius: 6px;
+    opacity: 1;
 }
 #hintCont{
-    position: absolute;
-    top: 610px;
-    left: 105px;
+    position: relative;
     height: fit-content;
     width: fit-content;
     font-weight: bold;
     font-size: 1.2rem;
+    padding-top: 25px;
 }
 #hint{
     font-weight: normal;
 }
 #blankSpaces{
-    position: absolute;
-    top: 535px;
-    left: 105px;
+    position: relative;
     height: fit-content;
     width: fit-content;
-    padding-top: 10px;
+    padding-top: 55px;
 }
 .space {
     display: inline-block;
@@ -103,7 +99,7 @@ body {
   #asteroid{
     position: absolute;
     left: -90px;
-    top: -40px;
+    top: -30px;
     height: 75px;
     width: 210px;
     transform: rotate(-130deg);
