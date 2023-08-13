@@ -99,7 +99,7 @@ $(document).ready(async function () {
           asteroidSVG.animate({ scale: 7 });
           TweenLite.to(asteroidSVG,.2,{opacity:0, delay:1})
           TweenLite.to($("#explosion"),1.8,{opacity:1, scale:1.5, delay:.8, onComplete:()=>{
-            TweenLite.to($("#dinoFire"),2.5,{opacity:1})
+            TweenLite.to($("#dinoFire"),2.2,{opacity:1})
             TweenLite.to($("#explosion"),.3,{opacity:0,scale:.8})
           }})
         }
@@ -128,7 +128,9 @@ $(document).ready(async function () {
         }
         console.log(totalBlanks)
         if (totalBlanks == 0) {
-          alert("You win!");
+          TweenLite.to(asteroidSVG,.7,{rotation: -165, delay: 1, onComplete:()=>{
+            TweenLite.to(asteroidSVG,2,{top: -100, left: 300, opacity:0, scale:.5})}
+          })
         }
       }
       $("#letterInpt").val("");
@@ -137,6 +139,7 @@ $(document).ready(async function () {
   };
 
   const resetGame = async () => {
+    asteroidSVG.attr("style", "")
     $("#dinoFire").css("opacity", "0")
     usedLetterArr = []
     spacesCont.empty()
