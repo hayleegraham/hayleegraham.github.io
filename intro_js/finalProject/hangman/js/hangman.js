@@ -131,6 +131,11 @@ $(document).ready(async function () {
           TweenLite.to(asteroidSVG,.7,{rotation: -165, delay: 1, onComplete:()=>{
             TweenLite.to(asteroidSVG,2,{top: -100, left: 300, opacity:0, scale:.5})}
           })
+          $("#inputBtnCont").addClass("hide")
+          setTimeout(function(){
+            $("#message").text("Congrats, you saved the dinosaurs from the asteroid! Reset game to play again.")
+          },2500)
+          
         }
       }
       $("#letterInpt").val("");
@@ -139,6 +144,8 @@ $(document).ready(async function () {
   };
 
   const resetGame = async () => {
+    $("#message").text("")
+    $("#inputBtnCont").removeClass("hide")
     asteroidSVG.attr("style", "")
     $("#dinoFire").css("opacity", "0")
     usedLetterArr = []
