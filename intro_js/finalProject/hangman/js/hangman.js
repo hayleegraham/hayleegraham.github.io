@@ -29,98 +29,137 @@
 //If no, continue game
 
 $(document).ready(async function () {
-  const apiData = await $.get(
-    "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random"
-  );
+  let word;
+  let hint;
+  let apiData;
+  let spaceEl;
+  const spacesCont = $("#blankSpaces");
+  const asteroidSVG = $("#asteroid");
 
-  const toggleGameScreen = () => {
+  let wrongGuesses = 0;
+  let usedLetterArr = [];
+
+  async function getApiData() {
+    apiData = await $.get(
+      "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random"
+    );
+  }
+  const startGame = async () => {
+    await getApiData();
+    hint = apiData.Description;
+    $("#hint").text(hint);
+    word = apiData.Name.toUpperCase();
+    
+    for (var i = 0; i < word.length; i++) {
+      spacesCont.append(`<div class="space" index="${i}"></div>
+        &nbsp; &nbsp;`);
+    }
+    spaceEl = $(".space");
     $("#introScreen").toggle();
     $("#gameScreen").toggle();
   };
-
-  const hint = apiData.Description
-  $("#hint").text(hint)
-  const word = apiData.Name.toUpperCase();
-  const spacesCont = $("#blankSpaces");
-
-  for (var i = 0; i < word.length; i++) {
-    spacesCont.append(`<div class="space" index="${i}"></div>
-      &nbsp; &nbsp;`);
-  }
-
-  const spaceEl = $(".space");
-  let wrongGuesses = 0
-
-  console.log(word)
-
+  
   const checkLetter = () => {
-    console.log("checking letter")
+    console.log(word);
+    $("#error").text("");
+    console.log("checking letter");
     const userLetter = $("#letterInpt").val().toUpperCase();
     const index = word.indexOf(userLetter);
+    const usedLetterIndex = usedLetterArr.indexOf(userLetter);
 
-    
-    const asteroidSVG = $("#asteroid")
-
-    if (index == -1) {
-        wrongGuesses += 1
-        asteroidSVG.animate({opacity: "1"})
-        
-        if(wrongGuesses == 2){
-            asteroidSVG.animate({scale: 1.5})
-        }
-        if(wrongGuesses == 3){
-            asteroidSVG.animate({scale: 2})
-        }
-        if(wrongGuesses == 4){
-            asteroidSVG.animate({scale: 3})
-        }
-        if(wrongGuesses == 5){
-            asteroidSVG.animate({scale: 4})
-        }
-        if(wrongGuesses == 6){
-            asteroidSVG.animate({scale: 5})
-        }
-        if(wrongGuesses == 7){
-            asteroidSVG.animate({scale: 6})
-        }
-        if(wrongGuesses == 8){
-          asteroidSVG.animate({scale: 7})
-          console.log("Explosion")
-        }
-        
-
-        $("#usedLetters").append(`<span>${userLetter}</span>`)
-        console.log(wrongGuesses)
+    if (usedLetterIndex != -1) {
+      $("#error").text("*You already entered this letter.");
+      $("#letterInpt").val("");
+      $("#letterInpt").focus();
     } else {
-      let totalBlanks = 0;
-      let letterPos = [];
+      usedLetterArr.push(userLetter);
+      if (index == -1) {
+        wrongGuesses += 1;
+        asteroidSVG.animate({ opacity: "1" });
 
-      for (var i = 0; i < word.length; i++) {
-        if (word.charAt(i) == userLetter) {
-          const indexPos = i;
-          letterPos.push(indexPos);
+        if (wrongGuesses == 2) {
+          asteroidSVG.animate({ scale: 1.5 });
+        }
+        if (wrongGuesses == 3) {
+          asteroidSVG.animate({ scale: 2 });
+        }
+        if (wrongGuesses == 4) {
+          asteroidSVG.animate({ scale: 3 });
+        }
+        if (wrongGuesses == 5) {
+          asteroidSVG.animate({ scale: 4 });
+        }
+        if (wrongGuesses == 6) {
+          asteroidSVG.animate({ scale: 5 });
+        }
+        if (wrongGuesses == 7) {
+          asteroidSVG.animate({ scale: 6 });
+        }
+        if (wrongGuesses == 8) {
+          asteroidSVG.animate({ scale: 7 });
+
+          setTimeout(function () {
+            asteroidSVG.animate({ opacity: "0" }, "fast");
+            $("#explosion").animate({ opacity: "1", scale: 1.5 }, 1800);
+          }, 1000);
+          setTimeout(function () {
+            $("#explosion").animate({ scale: 0.7, opacity: "0" }, 1800);
+            $("#dinoFire").animate({ opacity: "1" }, 2500);
+          }, 2800);
+        }
+
+        $("#usedLetters").append(`<span>${userLetter}</span>`);
+        console.log(wrongGuesses);
+      } else {
+        let totalBlanks = 0;
+        let letterPos = [];
+
+        for (var i = 0; i < word.length; i++) {
+          if (word.charAt(i) == userLetter) {
+            const indexPos = i;
+            letterPos.push(indexPos);
+          }
+        }
+        for (var i = 0; i < letterPos.length; i++) {
+          const matchedLetters = $(`div[index="${letterPos[i]}"]`);
+          matchedLetters.text(userLetter);
+        }
+
+        for (const space of spaceEl) {
+          if ($(space).text() == "") {
+            totalBlanks += 1;
+          }
+        }
+        console.log(totalBlanks)
+        if (totalBlanks == 0) {
+          alert("You win!");
         }
       }
-      for (var i = 0; i < letterPos.length; i++) {
-        const matchedLetters = $(`div[index="${letterPos[i]}"]`);
-        matchedLetters.text(userLetter);
-      }
-
-      for (const space of spaceEl) {
-        if ($(space).text() == "") {
-          totalBlanks += 1;
-        }
-      }
-
-      if (totalBlanks == 0) {
-        alert("You win!");
-      }
+      $("#letterInpt").val("");
+      $("#letterInpt").focus();
     }
-    $("#letterInpt").val('')
-    $("#letterInpt").focus()
-    
   };
-  $("#submitBtn").click(checkLetter);
 
-  $("#playBtn").click(toggleGameScreen);
+  const resetGame = async () => {
+    usedLetterArr = []
+    spacesCont.empty()
+    $("#usedLetters").empty()
+    $("#hint").text("")
+    wrongGuesses = 0
+    asteroidSVG.css({"opacity": "0", "scale": "1"})
+    await getApiData();
+    hint = apiData.Description;
+    $("#hint").text(hint);
+    word = apiData.Name.toUpperCase();
+    
+    for (var i = 0; i < word.length; i++) {
+      spacesCont.append(`<div class="space" index="${i}"></div>
+        &nbsp; &nbsp;`);
+    }
+    spaceEl = $(".space");
+  };
+
+  $("#submitBtn").click(checkLetter);
+  $("#resetBtn").click(resetGame);
+  $("#playBtn").click(startGame);
 });

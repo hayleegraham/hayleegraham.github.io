@@ -31,19 +31,21 @@ body {
     display: none;
     margin: 0 auto;
     max-height: 80%;
-    max-width: 80%;
+    max-width: 85%;
+}
+#imgBankCont{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 45px;
 }
 #dinoImg{
     position: absolute;
-    height: 440px;
-    width: 922px;
-    padding-top: 45px;
-    left: 100px;
+    height: 100%;
+    width: 100%;
 }
 #letterBank{
-    position: absolute;
-    right: 100px;
-    top: 45px;
+    position: relative;
     height: 425px;
     width: 320px;
     padding: 5px;
@@ -52,21 +54,22 @@ body {
     font-size: 1.2rem;
 }
 #inputBtnCont{
+    display: flex;
     position: absolute;
     top: 500px;
-    left: 105px;
+    left: 110px;
     height: fit-content;
     width: fit-content;
     padding-top: 20px;
-    z-index: 2;
+    z-index: 5;
 }
 #introTextCont button{
     border-radius: 6px;
 }
 #hintCont{
     position: absolute;
-    top: 88%;
-    left: 7%;
+    top: 610px;
+    left: 105px;
     height: fit-content;
     width: fit-content;
     font-weight: bold;
@@ -99,12 +102,36 @@ body {
   }
   #asteroid{
     position: absolute;
-    left: 3%;
-    top: -3%;
+    left: -90px;
+    top: -40px;
     height: 75px;
     width: 210px;
     transform: rotate(-130deg);
     z-index: 1;
     scale: 1;
     opacity: 0;
+}
+#error{
+    color: red;
+}
+#explosion{
+    opacity: 0;
+    z-index: 3;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#dinoImgCont{
+    position: relative;
+    display: inline-block;
+    height: 440px;
+    width: 922px;
+    margin-right: 50px;
+}
+#dinoFire{
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }

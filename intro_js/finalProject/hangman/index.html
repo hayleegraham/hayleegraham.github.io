@@ -18,10 +18,16 @@
         </div>
     </div>
     <div id="gameScreen">
-        <div id="dinoImgCont"><img id="asteroid" src="assets/asteroid.svg" alt=""><img id="dinoImg" src="assets/dinos.jpg" alt="Dinosaurs"></div>
-        <div id="letterBank">Used Letter Bank <hr> <div id="usedLetters"></div></div>
+        <div id="imgBankCont"> 
+            <div id="dinoImgCont">
+                <img id="asteroid" src="assets/asteroid.svg" alt=""><img id="dinoImg" src="assets/dinos.jpg" alt="Dinosaurs"><img id="explosion" src="assets/explosion.png" alt=""><img id="dinoFire" src="assets/dino-fire.png" alt="">
+            </div>
+            <div id="letterBank">Used Letter Bank <hr> <div id="usedLetters"></div></div>
+        </div>
         <div id="inputBtnCont">
             <input id="letterInpt" type="text"> &nbsp; <button id="submitBtn">Submit Letter</button>
+            <div id="error"></div>
+            <button id="resetBtn">Reset Game</button>
         </div>
         <div id="blankSpaces"></div>
         <div id="hintCont">Hint: <span id="hint"></span></div>
