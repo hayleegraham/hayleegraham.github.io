@@ -57,6 +57,7 @@ $(document).ready(async function () {
     spaceEl = $(".space");
     $("#introScreen").toggle();
     $("#gameScreen").toggle();
+    $("#letterInpt").focus();
   };
   
   const checkLetter = () => {
