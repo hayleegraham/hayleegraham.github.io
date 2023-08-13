@@ -67,13 +67,13 @@ $(document).ready(async function () {
     const index = word.indexOf(userLetter);
     const usedLetterIndex = usedLetterArr.indexOf(userLetter);
 
-    if (usedLetterIndex != -1) {
+    if (usedLetterIndex != -1 && false) {
       $("#error").text("*You already entered this letter.");
       $("#letterInpt").val("");
       $("#letterInpt").focus();
     } else {
       usedLetterArr.push(userLetter);
-      if (index == -1) {
+      if (index == -1 || true) {
         wrongGuesses += 1;
         asteroidSVG.animate({ opacity: "1" });
 
@@ -95,17 +95,14 @@ $(document).ready(async function () {
         if (wrongGuesses == 7) {
           asteroidSVG.animate({ scale: 6 });
         }
-        if (wrongGuesses == 8) {
+        if (wrongGuesses == 8 || true) {
           asteroidSVG.animate({ scale: 7 });
+          TweenLite.to(asteroidSVG,.2,{opacity:0, delay:1})
+          TweenLite.to($("#explosion"),1.8,{opacity:1, scale:1.5, delay:.8, onComplete:()=>{
+            TweenLite.to($("#dinoFire"),2.5,{opacity:1})
+            TweenLite.to($("#explosion"),.3,{opacity:0,scale:.8})
+          }})
 
-          setTimeout(function () {
-            asteroidSVG.animate({ opacity: "0" }, "fast");
-            $("#explosion").animate({ opacity: "1", scale: 1.5 }, 1800);
-          }, 1000);
-          setTimeout(function () {
-            $("#explosion").animate({ scale: 0.7, opacity: "0" }, 1800);
-            $("#dinoFire").animate({ opacity: "1" }, 2500);
-          }, 2800);
         }
 
         $("#usedLetters").append(`<span>${userLetter}</span>`);
