@@ -52,18 +52,8 @@ $(document).ready(async function () {
     }
   };
   const startGame = async () => {
-    await getApiData();
-    hint = apiData.Description;
-    $("#hint").text(hint);
-    word = apiData.Name.toUpperCase();
-
-    for (var i = 0; i < word.length; i++) {
-      spacesCont.append(`<div class="space" index="${i}"></div>
-        &nbsp; &nbsp;`);
-    }
-    spaceEl = $(".space");
+    await resetGame()
     TweenLite.to($("#introScreen"),1,{autoAlpha:0})
-    $("#letterInpt").focus();
   };
 
   const checkLetter = () => {
@@ -110,7 +100,7 @@ $(document).ready(async function () {
             scale: 1.5,
             delay: 0.8,
             onComplete: () => {
-              TweenLite.to($("#dinoFire"), 1.8, { opacity: 1 });
+              TweenLite.to($("#dinoFire"), 1.5, { opacity: 1 });
               TweenLite.to($("#explosion"), 0.3, { opacity: 0, scale: 0.8 });
             },
           });
@@ -192,9 +182,10 @@ $(document).ready(async function () {
 
     for (var i = 0; i < word.length; i++) {
       spacesCont.append(`<div class="space" index="${i}"></div>
-        &nbsp; &nbsp;`);
+        &nbsp;`);
     }
     spaceEl = $(".space");
+    $("#letterInpt").focus();
   };
 
   $("#submitBtn").click(checkLetter);

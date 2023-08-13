@@ -3,6 +3,7 @@ body {
     height: 100%;
     width: 100%;
     margin: 0 auto;
+    font-family:'Courier New', Courier, monospace
 }
 #introScreen {
     display: flow-root;
@@ -22,11 +23,13 @@ body {
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
     padding: 10px;
     padding-bottom: 20px;
     background-color: beige;
     border-radius: 50px;
-    width: 850px;
+    width: 1030px;
     opacity: .8;
     border: 1px solid black;
     box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.4),
@@ -73,6 +76,7 @@ body {
 #resetBtn{
     position: relative;
     margin-left: 820px;
+    margin-top: 10px;
     cursor: pointer;
     border-radius: 3px;
     border: 2px solid black;
@@ -104,7 +108,7 @@ body {
     width: fit-content;
     font-weight: bold;
     font-size: 1.2rem;
-    padding-top: 25px;
+    padding-top: 20px;
 }
 #hint{
     font-weight: normal;
@@ -113,7 +117,6 @@ body {
     position: relative;
     height: fit-content;
     width: fit-content;
-    padding-top: 5px;
 }
 .space {
     display: inline-block;
@@ -145,7 +148,8 @@ body {
     padding-left: 10px;
 }
 #message{
-    padding-top: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     font-size: 1.2rem;
     font-weight: bold;
     color: green;
