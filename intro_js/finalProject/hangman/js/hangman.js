@@ -55,8 +55,7 @@ $(document).ready(async function () {
         &nbsp; &nbsp;`);
     }
     spaceEl = $(".space");
-    $("#introScreen").toggle();
-    $("#gameScreen").toggle();
+    TweenLite.to($("#introScreen"),1,{autoAlpha:0})
     $("#letterInpt").focus();
   };
   
