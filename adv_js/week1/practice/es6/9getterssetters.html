@@ -1,0 +1,41 @@
+Getters and setters and one of the useful feature introduced in ES6. It will come in handy if you are using classes in JS.
+
+Without:
+<script>
+class People {
+constructor(name) {
+      this.name = name;
+    }
+    getName() {
+      return this.name;
+    }
+    setName(name) {
+      this.name = name;
+    }
+}
+let person1 = new People("Jon Snow");
+console.log(person1.getName());
+person1.setName("Dany");
+console.log(person1.getName());
+
+</script>
+With:
+<script>
+	class Peoples {
+constructor(name) {
+      this.name = name;
+    }
+    get Name() {
+      return this.name;
+    }
+    set Name(name) {
+      this.name = name;
+    }
+}
+let person2 = new Peoples("Jon Snow");
+console.log(person2.Name);
+person2.Name = "Dany";
+console.log(person2.Name);
+</script>
+
+
