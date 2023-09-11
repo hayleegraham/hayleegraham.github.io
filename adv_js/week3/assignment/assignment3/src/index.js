@@ -1,16 +1,11 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom/client';
-import Nav from './components/Nav';
-import 'bootstrap/dist/css/bootstrap.css';
-import './index.css';
-import { Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Nav/>
-  </React.StrictMode>
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
 );
-
-
