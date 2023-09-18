@@ -9,7 +9,7 @@ const Header = ({userName, UserInfo}) => {
     const [theme, toggleTheme] = useTheme();
     return (
     <header className={`appHeader ${styles[theme]}`}>
-        <Title appTitle= {`Welcome to React ${userName}`}/>
+        <Title appTitle= {`Welcome to React ${userName}`} toggleTheme={toggleTheme} theme={theme}/>
         <UserInfo userName={userName}/>
         <Description>You are ready to take this to the next level!</Description>
         <ButtonToggle toggleTheme={toggleTheme} theme={theme}/>
