@@ -1,9 +1,9 @@
 import './App.css';
-import WeatherDisplay from './components/WeatherDisplay'
+import CurrentWeather from './components/CurrentWeather'
 
 const App = ()=> {
   return (
-    <WeatherDisplay/>
+    <CurrentWeather/>
   )
 }
 
