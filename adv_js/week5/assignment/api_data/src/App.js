@@ -1,9 +1,14 @@
 import './App.css';
-import CurrentWeather from './components/CurrentWeather'
+import { Routes, Route } from 'react-router-dom';
+import CurrentWeather from './components/CurrentWeather';
+import Header from './components/Header';
 
 const App = ()=> {
   return (
+    <>
+    <Header/>
     <CurrentWeather/>
+    </>
   )
 }
 

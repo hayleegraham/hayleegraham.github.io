@@ -1,1 +1,5 @@
 *.psd
+*/WAAD/
+*/WAAD/*
+*/package-lock.json
+package-lock.json
