@@ -1,0 +1,17 @@
+.brown{
+    background-color: brown;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+.blue{
+    background-color: blue;
+}
+.Color div{
+    height: 50px;
+    width: 50px;
+    margin: 0 auto;
+}

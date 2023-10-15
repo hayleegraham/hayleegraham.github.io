@@ -1,0 +1,76 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #8fdbf0;
+}
+.weatherCont{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: #ffffff;
+    padding: 10px;
+    max-width: 900px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 8px rgb(47, 47, 47);
+    text-align: center;
+    
+
+    .Ps{
+        display: inline-flex;
+        padding-top: 20px;
+    }
+    .pLeft,
+    .pCenter,
+    .pRight{
+        text-align: left;
+        padding: 0 50px;
+        
+    }
+    .humidity{
+       margin: 16px 0;
+    }
+    .headerCont{
+        display: inline-flex;
+        position: relative;
+        left: -200px;
+    }
+    h1{
+        color: black;
+        font-size: 2.5rem;
+        margin: 3px 10px;
+        text-align: left;
+        padding-right: 65px;
+    }
+    .conditionCont{
+        text-align: center;
+        padding: 2px 0;
+        margin: 8px 0;
+        background-color: #dcfaff;
+        border-radius: 15px;
+
+        p{
+            margin: 6px;
+            padding: 0 25px;
+        }
+    }
+    img{
+        scale: 1.5;
+    }
+}
+.humidityBar{
+    --bg-width: 0%;
+
+    display: inline-flex;
+    margin-left: 5px;
+    border: 1px solid black;
+    width: 70px;
+    height: 12px;
+    padding: 0;
+    border-radius: 2px;
+
+    div{
+        height: 100%;
+        width: var(--bg-width);
+        background-color: black;
+    }
+}
