@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import styles from "./CurrentWeather.module.scss";
+import { WeatherContext } from "../../context/WeatherContext";
 
 const CurrentWeather = () => {
   const [locData, setLocData] = useState({});
   const [curWeatherData, setCurWeatherData] = useState({});
   const [marineDayData, setMarineDayData] = useState({});
+
+  const {weatherData} = useContext(WeatherContext);
 
   useEffect(() => {
     const requestData = async (api, q) => {
@@ -40,6 +43,7 @@ const CurrentWeather = () => {
         <div className={styles.weatherCont}>
           <div className={styles.headerCont}>
             <h1>Current Weather</h1>
+          {weatherData}
             <div className={styles.conditionCont}>
               <img src={curWeatherData?.condition?.icon} alt="Weather Condition Icon"></img>
               <p>{curWeatherData?.condition?.text}</p>

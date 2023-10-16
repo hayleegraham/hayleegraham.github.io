@@ -2,12 +2,16 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import CurrentWeather from './components/CurrentWeather';
 import Header from './components/Header';
+import WeatherContextProvider from './context/WeatherContext';
 
-const App = ()=> {
+const App = () => {
+  test()
   return (
     <>
-    <Header/>
-    <CurrentWeather/>
+      <WeatherContextProvider>
+        <Header />
+        <CurrentWeather />
+      </WeatherContextProvider>
     </>
   )
 }
