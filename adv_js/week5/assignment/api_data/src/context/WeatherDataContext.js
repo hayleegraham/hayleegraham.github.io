@@ -11,7 +11,7 @@ const WeatherContextProvider = ({ children }) => {
 
   const requestData = async (api, q) => {
     const response = await fetch(
-      `http://api.weatherapi.com/v1${api}?q=${q}&key=9d715acb554243cebba192902231310`
+      `https://api.weatherapi.com/v1${api}?q=${q}&key=9d715acb554243cebba192902231310`
     )
       .then((response) => response)
       .catch(() => false);
