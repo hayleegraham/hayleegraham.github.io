@@ -18,6 +18,7 @@ const WeatherContextProvider = ({ children }) => {
 
     const data = await response.json();
     if (data?.error) return false;
+    console.log(api, q, data)
     return data;
   };
   const getWeatherData = async (location) => {

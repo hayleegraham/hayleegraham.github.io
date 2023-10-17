@@ -42,9 +42,9 @@ const CurrentWeather = () => {
 
           <tr>
             <th scope="row">UV-Index</th>
-            <td>{curWeatherData.uv}&deg;F</td>
+            <td>{curWeatherData.uv}</td>
             <th scope="row">Visibility</th>
-            <td>{curWeatherData.vis_mile} miles</td>
+            <td>{curWeatherData.vis_miles} miles</td>
             <th scope="row">Rain</th>
             <td>{curWeatherData.precip_in} in</td>
           </tr>
