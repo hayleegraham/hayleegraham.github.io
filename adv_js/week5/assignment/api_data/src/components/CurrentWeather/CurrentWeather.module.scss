@@ -6,40 +6,25 @@ body{
 .weatherCont{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 120px;
     background-color: #ffffff;
     padding: 10px;
     max-width: 900px;
     border-radius: 30px;
     box-shadow: 4px 4px 8px rgb(47, 47, 47);
     text-align: center;
+    scroll-margin-top: 100px;
     
-
-    .Ps{
-        display: inline-flex;
-        padding-top: 20px;
-    }
-    .pLeft,
-    .pCenter,
-    .pRight{
-        text-align: left;
-        padding: 0 50px;
-        
-    }
-    .humidity{
-       margin: 16px 0;
-    }
     .headerCont{
         display: inline-flex;
         position: relative;
-        left: -200px;
+        left: -20%;
     }
-    h1{
-        color: black;
-        font-size: 2.5rem;
-        margin: 3px 10px;
+    h2{
         text-align: left;
-        padding-right: 65px;
+        padding-right: 80px;
+        position: relative;
+        left: -4%;
     }
     .conditionCont{
         text-align: center;
@@ -47,30 +32,19 @@ body{
         margin: 8px 0;
         background-color: #dcfaff;
         border-radius: 15px;
+        min-width: 120px;
+        min-height: 120px;
+        height: max-content;
+        width: max-content;
 
         p{
-            margin: 6px;
+            margin: 6px 0;
             padding: 0 25px;
         }
     }
     img{
         scale: 1.5;
+        padding-top: 6px;
     }
 }
-.humidityBar{
-    --bg-width: 0%;
 
-    display: inline-flex;
-    margin-left: 5px;
-    border: 1px solid black;
-    width: 70px;
-    height: 12px;
-    padding: 0;
-    border-radius: 2px;
-
-    div{
-        height: 100%;
-        width: var(--bg-width);
-        background-color: black;
-    }
-}

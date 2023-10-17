@@ -7,7 +7,6 @@ class Header extends React.Component {
         return(
             <div className="navbar-header">
                 <NavLink to="/"><p className="navbar-brand">Haylee's Website</p></NavLink>
-                
             </div>
         )
     }
