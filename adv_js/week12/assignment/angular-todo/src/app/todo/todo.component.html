@@ -1,0 +1,18 @@
+<h2>My Todos</h2>
+<div>
+  <label>Item: 
+    <input #itemName /> 
+  </label>
+  <button (click)="add(itemName.value); itemName.value = ''">Add</button>
+</div>
+
+<ul class="todos">
+  <li
+    *ngFor="let todo of todos"
+    [class.selected]="todo === selectedTodo"
+    (click)="onSelect(todo)"
+  >
+    <span class="badge">{{ todo.id }}</span> {{ todo.name }}
+  </li>
+</ul>
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
