@@ -1,0 +1,55 @@
+<div *ngIf="!currentRecipe">
+  <h2>Recipes</h2>
+
+  <!-- <label for="filter-recipes">Filter Recipes:</label>
+<select name="filter-recipes" id="filter-recipes">
+  <option value="Chicken">Chicken</option>
+  <option value="Beef">Beef</option>
+  <option value="Seafood">Seafood</option>
+  <option value="Soups/Stews">Soups/Stews</option>
+  <option value="Casseroles">Casseroles</option>
+  <option value="Pastas">Pastas</option>
+  <option value="Salads">Salads</option>
+  <option value="Desserts">Desserts</option>
+  <option value="Stir-Fry">Stir-Fry</option>
+  <option value="Snacks">Snacks</option>
+  <option value="Sides">Sides</option>
+  <option value="Other">Other</option>
+</select>
+
+<div class="form-group">
+  <label for="search-recipe"></label>
+  <input class="form-control" type="text" id="search-recipe" name="search-recipe" placeholder="Search by recipe title"/>
+  <button class="btn bg-light border">Search</button>
+</div> -->
+
+  <h3>All Recipes</h3>
+  <!-- <div class="sort-cont">
+<label for="sort-recipes">Sort by:</label>
+<select name="sort-recipes" id="sort-recipes" aria-placeholder="Sort by:">
+  <option value="alphabetical">Alphabetical</option>
+  <option value="date-added">Date Added</option>
+</select>
+</div> -->
+
+  <div class="recipes-cont">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes; let i = index"
+      [class.active]="i == currentIndex"
+      (click)="setActiveRecipe(recipe, i)"
+    >
+      <img src="{{ recipe.image }}" alt="Recipe Image" />
+      <h5>{{ recipe.title }}</h5>
+      <p>Added: {{ recipe.date }}</p>
+      <br />
+      <p>Rating: {{ recipe.rating }}/5</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="currentRecipe">
+  <app-recipe-detailed
+    [recipe]="currentRecipe"
+    (refreshList)="refreshList()"
+  ></app-recipe-detailed>
+</div>

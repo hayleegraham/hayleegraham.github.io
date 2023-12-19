@@ -1,0 +1,19 @@
+<div class="shopping-list-cont">
+  <h2>Shopping List</h2>
+  <form (ngSubmit)="addToList()" [formGroup]="form">
+    <label for="add-item"></label>
+    <input type="text" id="add-item" name="add-item" placeholder="List item" />
+    <button class="btn">Add To List</button>
+  </form>
+
+  <div class="list" *ngFor="let item of itemList">
+    <label>
+      <input
+        type="checkbox"
+        [value]="item"
+        (change)="onCheckboxChange($any($event))"
+      />
+      {{ item }}
+    </label>
+  </div>
+</div>

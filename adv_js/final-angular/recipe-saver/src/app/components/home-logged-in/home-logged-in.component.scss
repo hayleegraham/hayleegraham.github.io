@@ -1,0 +1,41 @@
+.recipes-cont{
+    display: inline-block;
+}
+.recipe-card{
+    margin: 20px 10px 20px 13px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 300px;
+    height: 270px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    float: inline-start;
+    img{
+        height: 200px;
+        width: 250px;
+        align-self: center;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    h5,
+    p{
+        margin: 0 auto;
+    }
+    h5{
+        width: 100%;
+        text-align: center;
+    }
+}
+h3{
+    width: 100%;
+}
+.top-recipes-cont,
+.recent-cont{
+    border: 1.5px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    width: 1296px;
+}
+
+

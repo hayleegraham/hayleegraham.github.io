@@ -1,0 +1,149 @@
+<h2>Add New Recipe</h2>
+<div class="submit-form">
+  <form (ngSubmit)="saveRecipe()" *ngIf="!submitted">
+    <div class="form-group">
+      <label for="title">Recipe Title:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        required
+        [(ngModel)]="recipe.title"
+        name="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="link">Link:</label>
+      <input
+        type="url"
+        class="form-control"
+        id="link"
+        [(ngModel)]="recipe.link"
+        name="link"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="servings">Servings:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="servings"
+        [(ngModel)]="recipe.servings"
+        name="servings"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="time"
+        [(ngModel)]="recipe.time"
+        name="time"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating(1-5):</label>
+      <input
+        type="number"
+        class="form-control"
+        id="rating"
+        [(ngModel)]="recipe.rating"
+        name="rating"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input
+        type="url"
+        class="form-control"
+        id="image"
+        [(ngModel)]="recipe.image"
+        name="image"
+      />
+    </div>
+
+    <div class="form-group" [formGroup]="form">
+      <label class="category-label" for="category"
+        >Category (Select all that apply):</label
+      >
+
+      <div class="category-checkboxes" *ngFor="let category of categoryList">
+        <label>
+          <input
+            type="checkbox"
+            [value]="category.name"
+            (change)="onCheckboxChange($any($event))"
+          />
+          {{ category.name }}
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="ingredients">Ingredients:</label>
+      <textarea
+        class="form-control"
+        id="ingredients"
+        required
+        [(ngModel)]="recipe.ingredients"
+        name="ingredients"
+      >
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="instructions">Instructions:</label>
+      <textarea
+        class="form-control"
+        id="instructions"
+        required
+        [(ngModel)]="recipe.instructions"
+        name="instructions"
+      >
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">Notes:</label>
+      <textarea
+        class="form-control"
+        id="notes"
+        [(ngModel)]="recipe.notes"
+        name="notes"
+      >
+      </textarea>
+    </div>
+
+    <input
+      type="hidden"
+      class="form-control"
+      id="date"
+      [(ngModel)]="recipe.date"
+      name="date"
+      value=" {{ date }} "
+    />
+
+    <button
+      type="submit"
+      class="btn text-white bg-secondary border border-black submit-button"
+    >
+      Submit Recipe
+    </button>
+  </form>
+
+  <div *ngIf="submitted">
+    <h4>You submitted your recipe successfully!</h4>
+    <button
+      class="btn btn text-white bg-secondary border border-black submit-button"
+      (click)="newRecipe()"
+    >
+      Add New Recipe
+    </button>
+  </div>
+</div>

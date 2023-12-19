@@ -1,0 +1,35 @@
+<div *ngIf="!currentRecipe" class="recipes-cont">
+  <h3 class="mt-2">Recently Added Recipes</h3>
+  <div class="recent-cont">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes; let i = index"
+      [class.active]="i == currentIndex"
+      (click)="setActiveRecipe(recipe, i)"
+    >
+      <img src="{{ recipe.image }}" alt="Recipe Image" />
+      <h5>{{ recipe.title }}</h5>
+      <p>Added: {{ recipe.date }}</p>
+    </div>
+  </div>
+
+  <h3 class="mt-4">Top Rated Recipes</h3>
+  <div class="top-recipes-cont">
+    <div
+      class="recipe-card"
+      *ngFor="let recipe of recipes; let i = index"
+      [class.active]="i == currentIndex"
+      (click)="setActiveRecipe(recipe, i)"
+    >
+      <img src="{{ recipe.image }}" alt="Recipe Image" />
+      <h5>{{ recipe.title }}</h5>
+      <p>Rating: {{ recipe.rating }}/5</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="currentRecipe">
+  <app-recipe-detailed
+    (refreshList)="refreshList()"
+    [recipe]="currentRecipe"
+  ></app-recipe-detailed>
+</div>

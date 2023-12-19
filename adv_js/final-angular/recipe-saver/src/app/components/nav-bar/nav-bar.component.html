@@ -1,0 +1,29 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-secondary">
+    <img
+      src="../../../assets/images/recipe_logo.png"
+      alt="Recipe Book Image"
+      width="40"
+      height="40"
+    />
+    <a href="#" class="navbar-brand mx-1 fs-2">Recipe Saver</a>
+    <div class="navbar-nav mr-auto ms-5">
+      <li class="nav-item mx-3">
+        <a routerLink="home" class="nav-link">HOME</a>
+      </li>
+      <li class="nav-item mx-3">
+        <a routerLink="recipes" class="nav-link">RECIPES</a>
+      </li>
+      <!-- <li class="nav-item mx-3">
+            <a routerLink="shopping" class="nav-link">SHOPPING LIST</a>
+          </li> -->
+      <li class="nav-item mx-3">
+        <a routerLink="add" class="nav-link">ADD NEW RECIPE</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

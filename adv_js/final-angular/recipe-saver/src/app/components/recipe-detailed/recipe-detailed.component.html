@@ -1,0 +1,51 @@
+<div *ngIf="currentRecipe" class="recipe-detailed-cont">
+  <div class="top-card-cont">
+    <h2 class="my-3">{{ currentRecipe.title }}</h2>
+    <img src="{{ currentRecipe.image }}" alt="Recipe Image" />
+    <table>
+      <tr>
+        <td>Date Added:</td>
+        <td>{{ currentRecipe.date }}</td>
+        <td class="col2">Link:</td>
+        <td class="link-cont">
+          <a href="{{ currentRecipe.link }}"> {{ currentRecipe.link }} </a>
+        </td>
+      </tr>
+      <tr>
+        <td>Rating:</td>
+        <td>{{ currentRecipe.rating }}/5</td>
+        <td class="col2">Servings:</td>
+        <td>{{ currentRecipe.servings }}</td>
+      </tr>
+      <tr>
+        <td>Category:</td>
+        <td>{{ currentRecipe.category }}</td>
+        <td class="col2">Time:</td>
+        <td>{{ currentRecipe.time }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="ingredients-cont">
+    <h3>Ingredients</h3>
+    <div *ngFor="let ingredient of currentRecipe.ingredientsArr">
+      <p>{{ ingredient }}</p>
+    </div>
+    <hr />
+  </div>
+  <div class=".instructions-cont">
+    <h3>Instructions</h3>
+    <P> {{ currentRecipe.instructions }} </P>
+    <hr />
+  </div>
+  <h3>Notes</h3>
+  <P> {{ currentRecipe.notes }} </P>
+</div>
+
+<button
+  class="btn bg-danger border border-black mt-2 delete-btn"
+  (click)="deleteRecipe()"
+>
+  Delete Recipe
+</button>
+
+<p>{{ message }}</p>
