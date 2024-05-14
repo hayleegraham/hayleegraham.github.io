@@ -74,7 +74,7 @@ class Player{
             }
             if(this.frame < 3) this.frameY = 0;
             else if(this.frame < 7) this.frameY = 1;
-            else if(this.frame < 11) this.frameY + 2;
+            else if(this.frame < 11) this.frameY = 2;
             else this.frameY = 0;
         }
         const dx = this.x - mouse.x;
@@ -177,7 +177,7 @@ class Fish {
             }
             if(this.frame < 3) this.frameY = 0;
             else if(this.frame < 7) this.frameY = 1;
-            else if(this.frame < 11) this.frameY + 2;
+            else if(this.frame < 11) this.frameY = 2;
             else this.frameY = 0;
         }
         //detect collision
@@ -251,7 +251,7 @@ class pufferFish {
             }
             if(this.frame < 3) this.frameY = 0;
             else if(this.frame < 7) this.frameY = 1;
-            else if(this.frame < 11) this.frameY + 2;
+            else if(this.frame < 11) this.frameY = 2;
             else this.frameY = 0;
         }
         const dx = this.x - player.x;
